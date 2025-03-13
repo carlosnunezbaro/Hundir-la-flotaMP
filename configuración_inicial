@@ -1,0 +1,15 @@
+//Configuración incical que incluye datos de los barcos, jugadores y el tablero.
+//También da el mensaje de bienvenida
+
+#include<stdio.h>
+
+int configuracion_inicial(){
+
+
+
+
+
+
+
+
+}
