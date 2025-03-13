@@ -3,13 +3,33 @@
 
 #include<stdio.h>
 
-int configuracion_inicial(){
+int configuracion_inicial () {
 
+    //Mensaje de bienvenida
+    printf("Bienvenido al juego\n");
+    printf("HUNDIR LA FLOTA\n");
 
+    //Menú de configuración
+    printf("Hundir la flota\n");
+    printf("1. Configuración\n");
+    printf("2. Jugar\n");
+    printf("3. Salir\n");
 
+    int opcion; //Selección de la opción del menú
+    do {
+        printf("Introduce una opción:(1, 2 o 3) ");
+        scanf("%d", &opcion);
+    } while (opcion < 1 || opcion > 3);
 
-
-
-
-
+    switch (opcion) {
+        case 1:
+            configuración();
+            break;
+        case 2:
+            jugar();    //cambiar más tarde si la función no se llama así
+            break;
+        case 3:
+            salir();
+            break;
+    }
 }
