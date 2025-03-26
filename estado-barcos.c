@@ -18,6 +18,7 @@ typedef struct {
 int Imprimr_Tablero(int filas, int columnas, int tablero[filas][columnas]);
 int Intentar_Colocar(int filas, int columnas, int tablero[filas][columnas], Barco *barco);
 int Colocar_Barcos(int filas, int columnas, int tablero[filas][columnas], Barco *barco);
+int Barcos_Pegados(int filas, int columnas, int yablero[filas][columnas], Barco *barco);
 
 
 
@@ -44,7 +45,7 @@ int Intentar_Colocar(int filas, int columnas, int tablero[filas][columnas], Barc
             if (tablero[barco->x][barco->y+i] !=0) {
         printf("!No se ha podido colocar un barco en esa posición!\n"); // Si el espacio ya esta ocupado, no se podrá poner otro barco
         return 0;
-        q
+        
         
       }
 }
@@ -98,6 +99,34 @@ Colocar_Barco(int filas, int columnas, int tablero[filas][columnas], Barco *barc
 printf("No se ha podido colocoar el barco\n");
 return 0;
     
+}
+
+int Barcos_Pegados(int filas, int columnas, int yablero[filas][columnas], Barco *barco) {
+
+    int inicial_x, inicial_y, final_x, final_y, i,j;
+
+    inicial_x = (barco->x > 0) ? barco->x - 1 : 0;
+    inicial_y = (barco->y > 0) ? barco->y - 1 : 0;
+    final_x = (barco->orientacion == 'V') ? barco->x + barco->longitud : barco->x + 1;
+    final_y = (barco->orientacion == 'H') ? barco->y + barco->longitud : barco->y + 1;
+
+    // Esta comprobacion tiene que estar acorde con los limites del tablero
+
+    if (final_x >= filas)
+        final_x = filas -1;
+    if (final_y >= columnas)
+        final_y = columnas - 1;
+
+    // Recorrer la zona que esta alrededor del barco y comprobar si hay otro barco
+
+    for (i = inicial_x; i <= final_x; i++) {
+        for (j = inicial_y; j<= final_y; j++)
+        if (tablero[i][j] !=0){
+            printf("No puedes colocar un barco al lado de otro \n");
+            return 0;
+        }
+      return 1; // Si se ha podido colocar el barco
+    }
 }
 
 
