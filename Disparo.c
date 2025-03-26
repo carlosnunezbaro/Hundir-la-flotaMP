@@ -8,7 +8,7 @@ int main(){
     int turnos=1;
     int fin=1;
     int taboponente1[i][j];
-    taboponente1[i][j]=tablero[i][j];
+    taboponente1[i][j]=tablero[i][j];        \\inicializamos los tableros de ambos jugadores
     int taboponente2[i][j];
     taboponente2[i][j]=tablero[i][j];
     do{
@@ -34,7 +34,7 @@ int disparoJ1(int tablero,int taboponente1,int turnos,barcos*barco,int fin){
         printf("fallo");
         tablero[i][j]=0;
         taboponente1[i][j]='*';
-        printf("%d",taboponente1[i][j]);
+        printf("%d",taboponente1[i][j]);   \\imprime la matriz oponente con el efecto del disparo ya efectuado
     }else{
         printf("tocado");
         tablero[i][j]= 1;
@@ -76,7 +76,7 @@ int i,j,ci,cj;
 i=0;
 j=0;
 n=0;
-while(i==0||i>=10){
+while(i==0||i>=10){    \\selecciona una posicion aleatoria de la matriz
     i=rand()%11;
 }
 while(j==0||j>=10){
@@ -102,7 +102,7 @@ while(j==0||j>=10){
                     ci=i;
                     cj=j;
                     for(n=0;n<=100;n++){
-                    while(ci<=i-1|ci==i|ci>=i+1){
+                    while(ci<=i-1|ci==i|ci>=i+1){     \\selecciona una posicion aleatoria de un area de la matriz donde ha ocurrido un impacto
                         i=rand()%11;
                         }
                         while(cj<=j-1|cj==j|cj>=j+1){
