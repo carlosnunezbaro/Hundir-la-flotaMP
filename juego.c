@@ -14,7 +14,6 @@ void inicializar_juego(EstadoJuego *estado_juego, int filas, int columnas) {
     estado_juego->barcos_hundidos = 0;
     estado_juego->disparos_realizados = 0;
     // Inicializar posiciones de los barcos aquí
-    // Ejemplo: Colocar barcos en posiciones fijas (puedes hacer esto aleatorio si lo prefieres)
     if (filas > 0 && columnas > 2) {
         estado_juego->tablero[0][0] = 1; // Barco en (0,0)
         estado_juego->tablero[0][1] = 1; // Barco en (0,1)
