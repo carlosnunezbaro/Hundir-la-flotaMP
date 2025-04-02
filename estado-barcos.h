@@ -4,11 +4,14 @@
 // #include "modulo_configuracion.h" cuando lo tengamos
 
 
-int Intentar_Colocar(int filas, int columnas, int tablero[filas][columnas], Barco *barco);
-int Colocar_Barco(int filas, int columnas, int tablero[filas][columnas], Barco *barco); // Verifica si se puede colocar barco o no
-void Imprimir_Tablero(int filas, int columnas, int tablero[filas][columnas]); // Imprime el tablero 
-int Barcos_Pegados(int filas, int columnas, int tablero[filas][columnas], Barco *barco); // Verifica que no haya ningun barco junto 
-
+int Imprimr_Tablero_1(int fila, int columnas, char **tablero1); 
+int Imprimir_Tablero_2(int filas, int columnas, char **tablero2);
+int Intentar_Colocar_1(int filas, int columnas, char **tablero1, Barco *barco);
+int Colocar_Barcos_1(int filas, int columnas, char **tablero1, Barco *barco);
+int Barcos_Pegados_1(int filas, int columnas, char **tablero1, Barco *barco);
+int Intentar_Colocar_Tablero2(int filas, int columnas, char **tablero2, Barco *barco);
+int Colocar_Barcos_Tablero_2(int filas, int columnas, char **tablero2, Barco *barco);
+int Barcos_Pegados_Tablero_2(int filas, int columnas, char **tablero2, Barco *barco);
 
 #endif 
 
