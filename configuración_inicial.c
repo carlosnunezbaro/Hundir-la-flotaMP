@@ -123,10 +123,6 @@ void salir() {
     exit(0);
 }
 
-void jugar() {
-    // Implementar la función jugar si es necesario
-}
-
 //funciones dentro de configuración
 
 //cabecera: void introducir_datos ()
@@ -173,20 +169,77 @@ void introducir_datos() {
     }
 
     //Guardar la configuración en un archivo .txt
+    FILE *config = fopen("config.txt", "w");
+    if (config == NULL) {
+        printf("Error al abrir el archivo de configuración\n");
+        return;
+    }
+
+    fprintf(config, "Jugador 1: %s\n", jugador1.nombre);                //Datos jugador 1
+    fprintf(config, "Disparo: %c\n", jugador1.disparo);
+    fprintf(config, "numero de disparos: %d\n", jugador1.num_disp);
+    fprintf(config, "ultimo ganador: %d\n", jugador1.ultimo_ganador);
+    fprintf(config, "id: %d\n", jugador1.id_jugador);
+    fprintf(config, "Jugador 2: %s\n", jugador2.nombre);                //Datos jugador 2
+    fprintf(config, "Disparo: %c\n", jugador2.disparo);
+    fprintf(config, "numero de disparos: %d\n", jugador2.num_disp);
+    fprintf(config, "ultimo ganador: %d\n", jugador2.ultimo_ganador);
+    fprintf(config, "id: %d\n", jugador2.id_jugador);
+    fprintf(config, "Tamaño del tablero: %d\n", tamaño_tablero);       //Datos del tablero
+
+    fclose(config);
+    printf("Configuración guardada correctamente.\n");
 }
 
 //cabecera: void mostrar()
 //precondición: el usuario ha seleccionado 2 en configuración
 //postcondición: se han mostrado los datos de los barcos, jugadores y tablero
 void mostrar() {
-    // Implementar la función mostrar
+
+    
+    char *texto;
+    int tamaño = 1024;
+
+    //abrir el fichero:
+    FILE *config = fopen("config.txt", "r");
+    if (config == NULL) {
+        printf("Error al abrir el archivo de configuración\n");
+        return;
+    }
+
+    //Asignar memoria dinamica
+    texto = (char *)malloc(sizeof(char)*tamaño);
+    if (texto == NULL) {
+        printf("Error al asignar espacio de memoria\n");
+        fclose(config);
+        return;
+    }
+
+    //Leer e imprimir en pantalla el contenido de config.txt
+    while (fgets(texto, tamaño, config) != NULL) {
+        printf("%s", texto);
+    }
+
+    //Liberar memoria y cerrar archivo
+    free(texto);
+    fclose(config);
+
 }
 
 //cabecera: void borrar()
 //precondición: el usuario ha seleccionado 3 en configuración
 //postcondición: se han borrado los datos de los barcos, jugadores y tablero
 void borrar() {
-    // Implementar la función borrar
+
+    FILE *config = fopen("config.txt", "w"); //crea el archivo destruyendo el anterior y como no se va a escribir nada se queda en blanco
+    if (config == NULL) {                    //verifica si se ha abiero bien
+        printf("Error al abrir el archivo de configuración\n");
+        return;
+    }
+
+    //cerrar el archivo
+    fclose(config);
+
 }
 
 void guardar() {
