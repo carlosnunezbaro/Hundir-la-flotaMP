@@ -1,31 +1,20 @@
-#ifndef JUEGO_H
-#define JUEGO_H
+#ifndef HUNDIR_LA_FLOTA_H
+#define HUNDIR_LA_FLOTA_H
 
-#include "barcos.h"
-#include "configuracion_inicial.h"
+typedef struct {
+    int **tablero;
+    int filas;
+    int columnas;
+    int barcos_hundidos;
+    int disparos_realizados;
+} EstadoJuego;
 
-// Inicializa el juego cargando barcos y configurando jugadores
-void inicializar_juego();
+void inicializar_juego(EstadoJuego *estado_juego, int filas, int columnas);
+void reiniciar_juego(EstadoJuego *estado_juego);
+void guardar_juego(const EstadoJuego *estado_juego, const char *nombre_archivo);
+void cargar_juego(EstadoJuego *estado_juego, const char *nombre_archivo);
+void mostrar_resumen(const EstadoJuego *estado_juego);
+void jugar(EstadoJuego *estado_juego);
+void mostrar_menu(EstadoJuego *estado_juego);
 
-// Carga los datos de los barcos desde un archivo
-void cargar_barcos(const char *nombre_archivo);
-
-// Configura los datos de los jugadores, incluyendo sus tableros
-void configurar_jugadores(int jugadores_vs_maquina);
-
-// Inicia la partida colocando los barcos y preparando los tableros
-void iniciar_partida();
-
-// Empieza la partida cargando la configuración guardada
-void empezar_partida();
-
-// Guarda el estado actual de la partida en un archivo
-void guardar_partida(const char *nombre_archivo);
-
-// Carga el estado de una partida desde un archivo
-void cargar_partida(const char *nombre_archivo);
-
-// Muestra un resumen del estado actual de la partida
-void mostrar_resumen();
-
-#endif // JUEGO_H
+#endif // HUNDIR_LA_FLOTA_H
