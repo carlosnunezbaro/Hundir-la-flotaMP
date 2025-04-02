@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "hundir_la_flota.h"
+#include "juego_h"
 
 void inicializar_juego(EstadoJuego *estado_juego, int filas, int columnas) {
     estado_juego->filas = filas;
