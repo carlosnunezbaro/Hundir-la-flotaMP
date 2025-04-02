@@ -18,7 +18,7 @@ typedef struct {
 int Imprimr_Tablero(int filas, int columnas, int tablero[filas][columnas]);
 int Intentar_Colocar(int filas, int columnas, int tablero[filas][columnas], Barco *barco);
 int Colocar_Barcos(int filas, int columnas, int tablero[filas][columnas], Barco *barco);
-int Barcos_Pegados(int filas, int columnas, int yablero[filas][columnas], Barco *barco);
+int Barcos_Pegados(int filas, int columnas, int tablero[filas][columnas], Barco *barco);
 
 
 
