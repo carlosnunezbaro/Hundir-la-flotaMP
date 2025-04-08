@@ -152,7 +152,7 @@ void mostrar_resumen(const EstadoJuego *estado_juego) {
 
     printf("\nTablero Jugador 1:\n");
     for (int i = 0; i < estado_juego->filas; i++) {
-        for (int j = 0; j < estado_juego->columnas; j++) {
+        for (int j = 0; i < estado_juego->columnas; i++) {
             printf("%d ", estado_juego->tablero_jugador1[i][j]);
         }
         printf("\n");
@@ -160,7 +160,7 @@ void mostrar_resumen(const EstadoJuego *estado_juego) {
 
     printf("\nTablero Jugador 2:\n");
     for (int i = 0; i < estado_juego->filas; i++) {
-        for (int j = 0; j < estado_juego->columnas; j++) {
+        for (int j = 0; i < estado_juego->columnas; i++) {
             printf("%d ", estado_juego->tablero_jugador2[i][j]);
         }
         printf("\n");
@@ -223,6 +223,39 @@ void mostrar_menu(EstadoJuego *estado_juego) {
                 printf("Opción no válida. Inténtalo de nuevo.\n");
         }
     } while (opcion != 6);
+}
+
+void menu_pausa(EstadoJuego *estado_juego) {
+    int opcion;
+    char guardar;
+    do {
+        printf("Menu de Pausa:\n");
+        printf("1. Volver a la partida sin guardar\n");
+        printf("2. Guardar partida\n");
+        printf("3. Salir al menu principal\n");
+        printf("Elige una opción: ");
+        scanf("%d", &opcion);
+        switch (opcion) {
+            case 1:
+                return;  // Volver a la partida sin guardar
+            case 2:
+                guardar_juego(estado_juego, "partida_guardada.csv");
+                printf("Partida guardada.\n");
+                return;  // Volver a la partida después de guardar
+            case 3:
+                printf("¿Quieres guardar la partida antes de salir? (s/n): ");
+                scanf(" %c", &guardar);
+                if (guardar == 's' || guardar == 'S') {
+                    guardar_juego(estado_juego, "partida_guardada.csv");
+                    printf("Partida guardada.\n");
+                }
+                printf("Saliendo al menu principal...\n");
+                mostrar_menu(estado_juego);
+                return;
+            default:
+                printf("Opción no válida. Inténtalo de nuevo.\n");
+        }
+    } while (opcion != 3);
 }
 
 int main() {

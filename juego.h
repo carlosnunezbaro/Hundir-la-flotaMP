@@ -34,4 +34,7 @@ void jugar(EstadoJuego *estado_juego);
 // Muestra el menú principal del juego, permitiendo al usuario seleccionar opciones como jugar, reiniciar, mostrar resumen, guardar y cargar el juego, o salir
 void mostrar_menu(EstadoJuego *estado_juego);
 
+// Abre un menú durante la partida al pulsar la barra espaciadora, permitiendo guardar la partida, continuar jugando o salir al menú principal
+void menu_pausa(EstadoJuego *estado_juego);
+
 #endif // JUEGO_H
