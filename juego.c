@@ -187,17 +187,16 @@ void jugar(EstadoJuego *estado_juego) {
     } while (continuar == 's' || continuar == 'S');
 }
 
-// Muestra el menú principal del juego, permitiendo al usuario seleccionar opciones como jugar, reiniciar, mostrar resumen, guardar y cargar el juego, o salir
+// Muestra el menú principal del juego, permitiendo al usuario seleccionar opciones como jugar, reiniciar, mostrar resumen, cargar el juego o salir
 void mostrar_menu(EstadoJuego *estado_juego) {
     int opcion;
     do {
         printf("Menu:\n");
         printf("1. Jugar\n");
-        printf("2. Reiniciar partida\n");
+        printf("2. Cargar partida\n");
         printf("3. Resumen de la partida\n");
-        printf("4. Guardar partida\n");
-        printf("5. Cargar partida\n");
-        printf("6. Salir\n");
+        printf("4. Reiniciar partida\n");
+        printf("5. Salir\n");
         printf("Elige una opción: ");
         scanf("%d", &opcion);
         switch (opcion) {
@@ -205,24 +204,21 @@ void mostrar_menu(EstadoJuego *estado_juego) {
                 jugar(estado_juego);
                 break;
             case 2:
-                reiniciar_juego(estado_juego);
+                cargar_juego(estado_juego, "partida_guardada.csv");
                 break;
             case 3:
                 mostrar_resumen(estado_juego);
                 break;
             case 4:
-                guardar_juego(estado_juego, "partida_guardada.csv");
+                reiniciar_juego(estado_juego);
                 break;
             case 5:
-                cargar_juego(estado_juego, "partida_guardada.csv");
-                break;
-            case 6:
                 printf("Saliendo del juego...\n");
                 break;
             default:
                 printf("Opción no válida. Inténtalo de nuevo.\n");
         }
-    } while (opcion != 6);
+    } while (opcion != 5);
 }
 
 void menu_pausa(EstadoJuego *estado_juego) {
@@ -230,7 +226,7 @@ void menu_pausa(EstadoJuego *estado_juego) {
     char guardar;
     do {
         printf("Menu de Pausa:\n");
-        printf("1. Volver a la partida\n");
+        printf("1. Volver a la partida sin guardar\n");
         printf("2. Guardar partida\n");
         printf("3. Salir al menu principal\n");
         printf("Elige una opción: ");
