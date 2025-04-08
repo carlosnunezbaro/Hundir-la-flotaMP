@@ -50,68 +50,30 @@ void disparoJ1(int filas,int columnas,char **tablero2,int turnos,BarcosJ2,int nb
                         printf("tocado");
                         tablero2[i][j]='T';
                         printf("%d",tablero2[i][j]);
-                        if (BarcosJ2.fragata1 = 0){
-                            printf("hundido");
-                            nbJ2=nbJ2-1;
-                            tablero2[i][j]='H';
-                            printf("%d",tablero2[i][j]);
-                        }
-                          if (BarcosJ2.fragata2 = 0){
-                            printf("hundido");
-                            nbJ2=nbJ2-1;
-                            tablero2[i][j]='H';
-                            printf("%d",tablero2[i][j]);
-                        }
-                           if (BarcosJ2.fragata3 = 0){
-                            printf("hundido");
-                            nbJ2=nbJ2-1;
-                            tablero2[i][j]='H';
-                            printf("%d",tablero2[i][j]);
-                        }
+                        chequeoH(tablero2[i][j],barcosJ2,nbJ2);
+                        printf("%d",tablero2[i][j]);
                    }
                    if(tablero2[i][j]=='d'||tablero2[i][j]!='*'){
-                    printf("tocado");
-                        if(tablero2[i][j]=BarcosJ2.destructor1)
-                               BarcosJ2.destructor1= BarcosJ2.destructor1-1;
-                        if(tablero2[i][j]=BarcosJ2.destructor2)
-                               BarcosJ2.destructor2= BarcosJ2.destructor2-1;
-                        tab2[i][j]='T';
+                        printf("tocado");
+                        tablero2[i][j]='T';
                         printf("%d",tablero2[i][j]);
-                        if (BarcosJ2.destructor1 = 0){
-                            printf("hundido");
-                            nbJ2=nbJ2-1;
-                             tablero2[i][j]='H';
-                            printf("%d",tablero2[i][j]);
-                        }
-                          if (BarcosJ2.destructor2 = 0){
-                            printf("hundido");
-                            nbJ2=nbJ2-1;
-                            tablero2[i][j]='H';
-                            printf("%d",tablero2[i][j]);
-                        }
+                        chequeoH(tablero2[i][j],barcosJ2,nbJ2);
+                        printf("%d",tablero2[i][j]);
                    }
 
                     if(tablero2[i][j]=='a'||tablero2!='*'){
-                        printf("tocado");
-                        if(tablero[i][j]=BarcosJ2.acorazado){
-                               BarcosJ2.acorazado= BarcosJ2.acorazado-1;
-                                tablero2[i][j]='T';
-                                printf("%d",tablero2[i][j]);
-                                
-                        if (BarcosJ2.acorazado = 0){
-                            printf("hundido");
-                            nbJ2=nbJ2-1;
-                            tablero2[i][j]='H';                            
-                            printf("%d",tablero2[i][j]);
-                        }
-                        }
+                       printf("tocado");
+                        tablero2[i][j]='T';
+                        printf("%d",tablero2[i][j]);
+                        chequeoH(tablero2[i][j],barcosJ2,nbJ2);
+                        printf("%d",tablero2[i][j]);
                     }
                 if(tablero2[i][j]=='s'||tablero2!='*'){
                     printf("hundido");
                     BarcosJ2.submarino = 0;
                     nbJ2=nbJ2-1;
                     tablero2[i][j]='H';
-                    printf("%d",tab2[i][j]);;
+                    printf("%d",tablero2[i][j]);;
                 }else{
                     printf("fallo");
                     tablero2[i][j]='*';
@@ -174,67 +136,25 @@ while(j==0||j>=10){
                 if(tablero1[i][j]=='a'||tablero1[i][j]=='d'||tablero1[i][j]=='f'||tablero1[i][j]=!'*'){
                    if(tablero1[i][j]=='f'||tablero1[i][j]=!'*'){
                     printf("tocado");
-                        if(tablero1[i][j]=BarcosJ1.fragata1)
-                               BarcosJ1.fragata1= BarcosJ1.fragata1-1;
-                        if(tablero1[i][j]=BarcosJ1.fragata2)
-                               BarcosJ1.fragata2= BarcosJ1.fragata2-1;
-                        if(tablero1[i][j]=BarcosJ1.fragata3)
-                               BarcosJ1.fragata3= BarcosJ1.fragata3-1;
-                        tablero1[i][j]='T';
-                        printf("%d",tablero1[i][j]);
-                        if (BarcosJ1.fragata1 = 0){
-                            printf("hundido");
-                            nbJ1=nbJ1-1;
-                            tablero1[i][j]='H';
-                            printf("%d",tablero1[i][j]);
-                        }
-                          if (BarcosJ1.fragata2 = 0){
-                            printf("hundido");
-                            nbJ1=nbJ1-1;
-                            tablero1[i][j]='H';
-                            printf("%d",tablero1[i][j]);
-                        }
-                           if (BarcosJ1.fragata3 = 0){
-                            printf("hundido");
-                            nbJ1=nbJ1-1;
-                            tablero1[i][j]='H';
-                            printf("%d",tablero1[i][j]);
-                        }
+                    tablero1[i][j]='T';
+                    printf("%d",tablero1[i][j]);
+                    chequeoH(tablero1[i][j],barcosJ1,nbJ1);
+                    printf("%d",tablero1[i][j]);
                    }
                    if(tablero1[i][j]=='d'||tablero1[i][j]=!'*'){
                     printf("tocado");
-                        if(tablero1[i][j]=BarcosJ1.destructor1)
-                               BarcosJ1.destructor1= BarcosJ1.destructor1-1;
-                        if(tablero1[i][j]=BarcosJ1.destructor2)
-                               BarcosJ1.destructor2= BarcosJ1.destructor2-1;
-                        tablero1[i][j]='T';
-                        printf("%d",tablero1[i][j]);
-                        if (BarcosJ1.destructor1 = 0){
-                            printf("hundido");
-                            nbJ1=nbJ1-1;
-                            tablero1[i][j]='H';
-                            printf("%d",tablero1[i][j]);
-                        }
-                          if (BarcosJ1.destructor2 = 0){
-                            printf("hundido");
-                            nbJ1=nbJ1-1;
-                            tablero1[i][j]='H';
-                            printf("%d",tablero1[i][j]);
-                        }
+                    tablero1[i][j]='T';
+                    printf("%d",tablero1[i][j]);
+                    chequeoH(tablero1[i][j],barcosJ1,nbJ1);
+                    printf("%d",tablero1[i][j]);
                    }
 
                     if(tablero1[i][j]=='a'||tablero1[i][j]='*'){
-                        printf("tocado");
-                        if(tablero[i][j]=BarcosJ1.acorazado){
-                               BarcosJ1.acorazado= BarcosJ1.acorazado-1;
-                                tablero1[i][j]='T';
-                                printf("%d",tablero1[i][j]);
-                        if (BarcosJ1.acorazado = 0){
-                            printf("hundido");
-                            nbJ1=nbJ1-1;
-                            tablero1[i][j]='H';
-                        }
-                        }
+                    printf("tocado");
+                    tablero1[i][j]='T';
+                    printf("%d",tablero1[i][j]);
+                    chequeoH(tablero1[i][j],barcosJ1,nbJ1);
+                    printf("%d",tablero1[i][j]);
                     }
                 if(tablero1[i][j]=='s'||tablero1[i][j]=!'*'){
                     printf("hundido");
@@ -258,4 +178,50 @@ while(j==0||j>=10){
     if(nbJ1=0){
         fin = 0;
     }
+}
+void chequeoH(char **tablero[i][j],int nBar,Barcos){
+    int h,l,cont;
+    cont=0;
+        for(h=i-1,h<=i+1,h++){
+            for(l=j-1,l<=j+1,l++){
+                if(tablero[h][l]='f'||tablero[h][l]!=tablero[i][j]{
+                    tablero[i][j]='H';
+                    tablero[h][l]='H';
+                    Barcos.fragatas=Barcos.fragatas-1;
+                    nBar=nbar-1;
+                }
+                if(tablero[h][l]='d'||tablero[h][l]!=tablero[i][j]){
+                    tablero[h][l]='T';
+                    cont=cont+1;
+                        if(cont=2){
+                            for(h=i-1,h<=i+1,h++){
+                                for(l=j-1,l<=j+1,l++){
+                                    if(tablero[h][l]='T'||tablero[h][l]!=tablero[i][j]{
+                                        tablero[i][j]='H';
+                                        tablero[h][l]='H';
+                                        Barcos.destructores=Barcos.destructores-1;
+                                        nBar=nbar-1;
+                                    }
+                                }
+                            }
+                    }
+                }
+                 if(tablero[h][l]='a'||tablero[h][l]!=tablero[i][j]){
+                    tablero[h][l]='T';
+                    cont=cont+1;  
+                    if(cont=3){
+                        for(h=i-2,h<=i+2,h++){
+                            for(l=j-2,l<=j+2,l++){
+                                if(tablero[h][l]='T'||tablero[h][l]!=tablero[i][j]){
+                                    tablero[i][j]='H';
+                                    tablero[h][l]='H';
+                                    Barcos.acorazado=Barcos.acorazado-1;
+                                    nBar=nbar-1;
+                                }
+                                }
+                            }
+                    }
+                 }
+            }
+        }
 }
