@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "juego_h"
+#include "juego.h"
+#include "estado-barcos.h"
 
 void inicializar_juego(EstadoJuego *estado_juego, int filas, int columnas) {
     estado_juego->filas = filas;
@@ -13,16 +14,9 @@ void inicializar_juego(EstadoJuego *estado_juego, int filas, int columnas) {
     }
     estado_juego->barcos_hundidos = 0;
     estado_juego->disparos_realizados = 0;
-    // Inicializar posiciones de los barcos aquí
-    if (filas > 0 && columnas > 2) {
-        estado_juego->tablero[0][0] = 1; // Barco en (0,0)
-        estado_juego->tablero[0][1] = 1; // Barco en (0,1)
-        estado_juego->tablero[0][2] = 1; // Barco en (0,2)
-        if (filas > 2) {
-            estado_juego->tablero[1][0] = 1; // Barco en (1,0)
-            estado_juego->tablero[2][0] = 1; // Barco en (2,0)
-        }
-    }
+
+    // Llamar a la función para colocar los barcos
+    Colocar_Barcos(filas, columnas, estado_juego->tablero);
 }
 
 void reiniciar_juego(EstadoJuego *estado_juego) {
@@ -141,9 +135,9 @@ int main() {
 
     // Liberar memoria al final del programa
     for (int i = 0; i < estado_juego.filas; i++) {
-        free(estado_juego.tablero[i]);
+        free(estado_juego->tablero[i]);
     }
-    free(estado_juego.tablero);
+    free(estado_juego->tablero);
 
     return 0;
 }
