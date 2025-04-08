@@ -13,11 +13,19 @@ typedef struct {
     int partida_finalizada;
 } EstadoJuego;
 
+typedef struct {
+    char nombre_jugador1[20];
+    char nombre_jugador2[20];
+    char disparo_jugador1;
+    char disparo_jugador2;
+    int tamano_tablero;
+} ConfiguracionJuego;
+
 // Inicializa el estado del juego con el número de filas y columnas especificado
-void inicializar_juego(EstadoJuego *estado_juego, int filas, int columnas);
+void inicializar_juego(EstadoJuego *estado_juego, const ConfiguracionJuego *configuracion);
 
 // Reinicia el juego liberando la memoria del tablero actual y re-inicializando el tablero con las mismas dimensiones
-void reiniciar_juego(EstadoJuego *estado_juego);
+void reiniciar_juego(EstadoJuego *estado_juego, const ConfiguracionJuego *configuracion);
 
 // Guarda el estado actual del juego en un archivo con el nombre especificado, en formato CSV
 void guardar_juego(const EstadoJuego *estado_juego, const char *nombre_archivo);

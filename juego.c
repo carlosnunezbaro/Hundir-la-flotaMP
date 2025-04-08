@@ -6,7 +6,10 @@
 #include "disparo.h"
 
 // Inicializa el estado del juego con el número de filas y columnas especificado
-void inicializar_juego(EstadoJuego *estado_juego, int filas, int columnas) {
+void inicializar_juego(EstadoJuego *estado_juego, const ConfiguracionJuego *configuracion) {
+    int filas = configuracion->tamano_tablero;
+    int columnas = configuracion->tamano_tablero;
+    
     estado_juego->filas = filas;
     estado_juego->columnas = columnas;
 
@@ -31,14 +34,14 @@ void inicializar_juego(EstadoJuego *estado_juego, int filas, int columnas) {
 }
 
 // Reinicia el juego liberando la memoria del tablero actual y re-inicializando el tablero con las mismas dimensiones
-void reiniciar_juego(EstadoJuego *estado_juego) {
+void reiniciar_juego(EstadoJuego *estado_juego, const ConfiguracionJuego *configuracion) {
     for (int i = 0; i < estado_juego->filas; i++) {
         free(estado_juego->tablero_jugador1[i]);
         free(estado_juego->tablero_jugador2[i]);
     }
     free(estado_juego->tablero_jugador1);
     free(estado_juego->tablero_jugador2);
-    inicializar_juego(estado_juego, estado_juego->filas, estado_juego->columnas);
+    inicializar_juego(estado_juego, configuracion);
 }
 
 // Guarda el estado actual del juego en un archivo con el nombre especificado, en formato CSV
@@ -152,7 +155,7 @@ void mostrar_resumen(const EstadoJuego *estado_juego) {
 
     printf("\nTablero Jugador 1:\n");
     for (int i = 0; i < estado_juego->filas; i++) {
-        for (int j = 0; i < estado_juego->columnas; i++) {
+        for (int j = 0; j < estado_juego->columnas; i++) {
             printf("%d ", estado_juego->tablero_jugador1[i][j]);
         }
         printf("\n");
@@ -190,6 +193,8 @@ void jugar(EstadoJuego *estado_juego) {
 // Muestra el menú principal del juego, permitiendo al usuario seleccionar opciones como jugar, reiniciar, mostrar resumen, cargar el juego o salir
 void mostrar_menu(EstadoJuego *estado_juego) {
     int opcion;
+    ConfiguracionJuego configuracion;
+    
     do {
         printf("Menu:\n");
         printf("1. Jugar\n");
@@ -201,6 +206,8 @@ void mostrar_menu(EstadoJuego *estado_juego) {
         scanf("%d", &opcion);
         switch (opcion) {
             case 1:
+                introducir_datos(&configuracion);
+                inicializar_juego(estado_juego, &configuracion);
                 jugar(estado_juego);
                 break;
             case 2:
@@ -210,7 +217,7 @@ void mostrar_menu(EstadoJuego *estado_juego) {
                 mostrar_resumen(estado_juego);
                 break;
             case 4:
-                reiniciar_juego(estado_juego);
+                reiniciar_juego(estado_juego, &configuracion);
                 break;
             case 5:
                 printf("Saliendo del juego...\n");
@@ -221,6 +228,7 @@ void mostrar_menu(EstadoJuego *estado_juego) {
     } while (opcion != 5);
 }
 
+// Abre un menú durante la partida al pulsar la barra espaciadora, permitiendo guardar la partida, continuar jugando o salir al menú principal
 void menu_pausa(EstadoJuego *estado_juego) {
     int opcion;
     char guardar;
@@ -233,43 +241,25 @@ void menu_pausa(EstadoJuego *estado_juego) {
         scanf("%d", &opcion);
         switch (opcion) {
             case 1:
-                return;  // Volver a la partida sin guardar
+                return;
             case 2:
-                guardar_juego(estado_juego, "partida_guardada.csv");
-                printf("Partida guardada.\n");
-                return;  // Volver a la partida después de guardar
+                printf("Introduce el nombre del archivo para guardar la partida: ");
+                char nombre_archivo[100];
+                scanf("%s", nombre_archivo);
+                guardar_juego(estado_juego, nombre_archivo);
+                break;
             case 3:
-                printf("¿Quieres guardar la partida antes de salir? (s para guardar, n para no guardar y salir): ");
+                printf("¿Quieres guardar la partida antes de salir al menú principal? (s/n): ");
                 scanf(" %c", &guardar);
                 if (guardar == 's' || guardar == 'S') {
-                    guardar_juego(estado_juego, "partida_guardada.csv");
-                    printf("Partida guardada.\n");
+                    printf("Introduce el nombre del archivo para guardar la partida: ");
+                    scanf("%s", nombre_archivo);
+                    guardar_juego(estado_juego, nombre_archivo);
                 }
-                printf("Saliendo al menu principal...\n");
-                mostrar_menu(estado_juego);
+                printf("Saliendo al menú principal...\n");
                 return;
             default:
                 printf("Opción no válida. Inténtalo de nuevo.\n");
         }
-    } while (opcion != 3);
-}
-
-int main() {
-    int filas, columnas;
-    printf("Introduce el tamaño del tablero (filas columnas): ");
-    scanf("%d %d", &filas, &columnas);
-
-    EstadoJuego estado_juego;
-    inicializar_juego(&estado_juego, filas, columnas);
-    mostrar_menu(&estado_juego);
-
-    // Liberar memoria al final del programa
-    for (int i = 0; i < estado_juego->filas; i++) {
-        free(estado_juego->tablero_jugador1[i]);
-        free(estado_juego->tablero_jugador2[i]);
-    }
-    free(estado_juego->tablero_jugador1);
-    free(estado_juego->tablero_jugador2);
-
-    return 0;
+    } while (1);
 }
