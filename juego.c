@@ -206,6 +206,7 @@ void mostrar_menu(EstadoJuego *estado_juego) {
         scanf("%d", &opcion);
         switch (opcion) {
             case 1:
+                // Permite cambiar la configuración y reiniciar la partida desde cero
                 introducir_datos(&configuracion);
                 inicializar_juego(estado_juego, &configuracion);
                 jugar(estado_juego);
@@ -217,7 +218,9 @@ void mostrar_menu(EstadoJuego *estado_juego) {
                 mostrar_resumen(estado_juego);
                 break;
             case 4:
+                // Inicia una nueva partida con la configuración existente, permitiendo nueva colocación de barcos
                 reiniciar_juego(estado_juego, &configuracion);
+                jugar(estado_juego);
                 break;
             case 5:
                 printf("Saliendo del juego...\n");
@@ -234,7 +237,7 @@ void menu_pausa(EstadoJuego *estado_juego) {
     char guardar;
     do {
         printf("Menu de Pausa:\n");
-        printf("1. Volver a la partida sin guardar\n");
+        printf("1. Volver a la partida\n");
         printf("2. Guardar partida\n");
         printf("3. Salir al menu principal\n");
         printf("Elige una opción: ");
