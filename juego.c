@@ -230,7 +230,7 @@ void menu_pausa(EstadoJuego *estado_juego) {
     char guardar;
     do {
         printf("Menu de Pausa:\n");
-        printf("1. Volver a la partida sin guardar\n");
+        printf("1. Volver a la partida\n");
         printf("2. Guardar partida\n");
         printf("3. Salir al menu principal\n");
         printf("Elige una opción: ");
@@ -243,7 +243,7 @@ void menu_pausa(EstadoJuego *estado_juego) {
                 printf("Partida guardada.\n");
                 return;  // Volver a la partida después de guardar
             case 3:
-                printf("¿Quieres guardar la partida antes de salir? (s/n): ");
+                printf("¿Quieres guardar la partida antes de salir? (s para guardar, n para no guardar y salir): ");
                 scanf(" %c", &guardar);
                 if (guardar == 's' || guardar == 'S') {
                     guardar_juego(estado_juego, "partida_guardada.csv");
@@ -268,7 +268,7 @@ int main() {
     mostrar_menu(&estado_juego);
 
     // Liberar memoria al final del programa
-    for (int i = 0; i < estado_juego.filas; i++) {
+    for (int i = 0; i < estado_juego->filas; i++) {
         free(estado_juego->tablero_jugador1[i]);
         free(estado_juego->tablero_jugador2[i]);
     }
