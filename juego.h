@@ -2,11 +2,15 @@
 #define JUEGO_H
 
 typedef struct {
-    int **tablero;
+    int **tablero_jugador1;
+    int **tablero_jugador2;
     int filas;
     int columnas;
-    int barcos_hundidos;
-    int disparos_realizados;
+    int barcos_hundidos_jugador1;
+    int barcos_hundidos_jugador2;
+    int disparos_realizados_jugador1;
+    int disparos_realizados_jugador2;
+    int partida_finalizada;
 } EstadoJuego;
 
 // Inicializa el estado del juego con el número de filas y columnas especificado
