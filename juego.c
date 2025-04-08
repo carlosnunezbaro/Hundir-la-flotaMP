@@ -28,21 +28,31 @@ void reiniciar_juego(EstadoJuego *estado_juego) {
 }
 
 void guardar_juego(const EstadoJuego *estado_juego, const char *nombre_archivo) {
-    FILE *archivo = fopen(nombre_archivo, "wb");
+    FILE *archivo = fopen(nombre_archivo, "w");
     if (archivo == NULL) {
         perror("Error al abrir el archivo para guardar");
         return;
     }
-    fwrite(&estado_juego->filas, sizeof(int), 1, archivo);
-    fwrite(&estado_juego->columnas, sizeof(int), 1, archivo);
+
+    // Guardar las dimensiones del tablero
+    fprintf(archivo, "%d,%d\n", estado_juego->filas, estado_juego->columnas);
+    
+    // Guardar el tablero
     for (int i = 0; i < estado_juego->filas; i++) {
-        fwrite(estado_juego->tablero[i], sizeof(int), estado_juego->columnas, archivo);
+        for (int j = 0; j < estado_juego->columnas; j++) {
+            fprintf(archivo, "%d", estado_juego->tablero[i][j]);
+            if (j < estado_juego->columnas - 1) {
+                fprintf(archivo, ",");
+            }
+        }
+        fprintf(archivo, "\n");
     }
-    fwrite(&estado_juego->barcos_hundidos, sizeof(int), 1, archivo);
-    fwrite(&estado_juego->disparos_realizados, sizeof(int), 1, archivo);
+
+    // Guardar el número de barcos hundidos y disparos realizados
+    fprintf(archivo, "%d,%d\n", estado_juego->barcos_hundidos, estado_juego->disparos_realizados);
+    
     fclose(archivo);
 }
-
 void cargar_juego(EstadoJuego *estado_juego, const char *nombre_archivo) {
     FILE *archivo = fopen(nombre_archivo, "rb");
     if (archivo == NULL) {
