@@ -4,5 +4,6 @@
 int disparoJ1(char **tablero2,int turnos,BarcosJ2,int nbJ2,int fin);
 int disparoIA(char **tablero1,int turnos,BarcosJ1,int nbJ1,int fin);
 void inicializador();
+void chequeoH(char **tablero[i][j],int nBar,Barcos);
 
 #endif // Disparo_h_INCLUDED
