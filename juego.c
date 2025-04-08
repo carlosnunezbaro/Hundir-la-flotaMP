@@ -54,23 +54,37 @@ void guardar_juego(const EstadoJuego *estado_juego, const char *nombre_archivo) 
     fclose(archivo);
 }
 void cargar_juego(EstadoJuego *estado_juego, const char *nombre_archivo) {
-    FILE *archivo = fopen(nombre_archivo, "rb");
+    FILE *archivo = fopen(nombre_archivo, "r");
     if (archivo == NULL) {
         perror("Error al abrir el archivo para cargar");
         return;
     }
-    fread(&estado_juego->filas, sizeof(int), 1, archivo);
-    fread(&estado_juego->columnas, sizeof(int), 1, archivo);
+
+    // Leer las dimensiones del tablero
+    fscanf(archivo, "%d,%d\n", &estado_juego->filas, &estado_juego->columnas);
+
+    // Reservar memoria para el tablero
     estado_juego->tablero = (int **)malloc(estado_juego->filas * sizeof(int *));
     for (int i = 0; i < estado_juego->filas; i++) {
         estado_juego->tablero[i] = (int *)malloc(estado_juego->columnas * sizeof(int));
-        fread(estado_juego->tablero[i], sizeof(int), estado_juego->columnas, archivo);
     }
-    fread(&estado_juego->barcos_hundidos, sizeof(int), 1, archivo);
-    fread(&estado_juego->disparos_realizados, sizeof(int), 1, archivo);
+
+    // Leer el tablero
+    for (int i = 0; i < estado_juego->filas; i++) {
+        for (int j = 0; j < estado_juego->columnas; j++) {
+            fscanf(archivo, "%d", &estado_juego->tablero[i][j]);
+            if (j < estado_juego->columnas - 1) {
+                fgetc(archivo); // Leer la coma
+            }
+        }
+        fgetc(archivo); // Leer el salto de línea
+    }
+
+    // Leer el número de barcos hundidos y disparos realizados
+    fscanf(archivo, "%d,%d\n", &estado_juego->barcos_hundidos, &estado_juego->disparos_realizados);
+    
     fclose(archivo);
 }
-
 void mostrar_resumen(const EstadoJuego *estado_juego) {
     printf("Resumen de la partida:\n");
     printf("Barcos hundidos: %d\n", estado_juego->barcos_hundidos);
