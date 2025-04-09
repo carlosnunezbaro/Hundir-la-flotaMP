@@ -3,7 +3,7 @@
 #include "Disparo.h"
 #include "estado-barcos.h"
 #include "barcos.h"
-
+#include "juego.h"
 
 typedef struct{
     int fragata=3;
@@ -14,12 +14,12 @@ typedef struct{
 
 
 void inicializador(){
-    int turnos=1;
-    int fin=1;
-    int nbJ1,nbJ2=7;
-    }
+    int turnos = 1;
+    int fin = 1;
+    int nbJ1 = 7, nbJ2 = 7;
+}
 
-void disparoJ1(int filas,int columnas,char **tablero2,int turnos,BarcosJ2,int nbJ2,int fin){// la dimensión de la matriz (1 porque es cuadrada
+void disparoJ1(int filas, int columnas, char **tablero2, char **tabop2, int *turnos, Barcos *barcosJ2, int *nbJ2, int *fin){// la dimensión de la matriz (1 porque es cuadrada
     int i,j = 0;
     printf("introduce la posicion del disparo \n");
     do{
@@ -31,53 +31,61 @@ void disparoJ1(int filas,int columnas,char **tablero2,int turnos,BarcosJ2,int nb
     if(tablero2[i][j]=='-'){
         printf("fallo");
         tablero2[i][j]='*';
-        printf("%d",tablero2[i][j]);   \\imprime la matriz oponente con el efecto del disparo ya efectuado
+        tabop2[i][j]='*';
+        printf("%d",tabop2[i][j]);   //imprime la matriz oponente con el efecto del disparo ya efectuado
     }else{
         do{
         printf("tocado");
-        tablero2[i][j]='T';
-        printf("%d",tablero2[i][j]);
+        tablero2[i][j]='T'; 
+        tabop2[i][j]='T';
+        printf("%d",tabop2[i][j]);
         if(tablero2[i][j]=='s'){
             printf("hundido");
             BarcosJ2.submarino = 0;
             nbJ2=nbJ2-1;
             tablero2[i][j]='H';
-            printf("%d",tablero2[i][j]);
+            tabop2[i][j]='H';
+            printf("%d",tabop2[i][j]);
         }else{
         if(tablero2[i][j]=='a'||tablero2[i][j]=='d'||tablero2[i][j]=='f'){
 
                    if(tablero2[i][j]=='f'||tablero2[i][j]!='*'){
                         printf("tocado");
                         tablero2[i][j]='T';
-                        printf("%d",tablero2[i][j]);
-                        chequeoH(tablero2[i][j],barcosJ2,nbJ2);
-                        printf("%d",tablero2[i][j]);
+                        tabop2[i][j]='T';
+                        printf("%d",tabop2[i][j]);
+                        chequeoH(tablero2[i][j],tabop2[i][j],barcosJ2,nbJ2);
+                        printf("%d",tabop2[i][j]);
                    }
                    if(tablero2[i][j]=='d'||tablero2[i][j]!='*'){
                         printf("tocado");
                         tablero2[i][j]='T';
-                        printf("%d",tablero2[i][j]);
-                        chequeoH(tablero2[i][j],barcosJ2,nbJ2);
-                        printf("%d",tablero2[i][j]);
+                        tabop2[i][j]='T';
+                        printf("%d",tabop2[i][j]);
+                        chequeoH(tablero2[i][j],tabop2[i][j],barcosJ2,nbJ2);
+                        printf("%d",tabop2[i][j]);
                    }
 
                     if(tablero2[i][j]=='a'||tablero2!='*'){
                        printf("tocado");
                         tablero2[i][j]='T';
-                        printf("%d",tablero2[i][j]);
-                        chequeoH(tablero2[i][j],barcosJ2,nbJ2);
-                        printf("%d",tablero2[i][j]);
+                        tabop2[i][j]='T';
+                        printf("%d",tabop2[i][j]);
+                        chequeoH(tablero2[i][j],tabop2[i][j],barcosJ2,nbJ2);
+                        printf("%d",tabop2[i][j]);
                     }
                 if(tablero2[i][j]=='s'||tablero2!='*'){
                     printf("hundido");
                     BarcosJ2.submarino = 0;
                     nbJ2=nbJ2-1;
                     tablero2[i][j]='H';
-                    printf("%d",tablero2[i][j]);;
+                    tabop2[i][j]='H';
+                    printf("%d",tabop2[i][j]);
                 }else{
                     printf("fallo");
                     tablero2[i][j]='*';
-                    printf("%d",tablero2[i][j]); 
+                    tabop2[i][j]='*';
+                    printf("%d",tabop2[i][j]); 
                 }
 
                 printf("introduce la posicion del disparo \n");
@@ -96,7 +104,96 @@ void disparoJ1(int filas,int columnas,char **tablero2,int turnos,BarcosJ2,int nb
         fin = 0;
     }
 }
-void disparoIA(char **tablero1,int turnos,BarcosJ2,int nbJ1,int fin){
+void disparoJ2(int filas, int columnas, char **tablero1, char **tabop1, int *turnos, Barcos *barcosJ1, int *nbJ1, int *fin){
+    int i,j = 0;
+    printf("introduce la posicion del disparo \n");
+    do{
+    printf("fila");
+    scanf("%i \n",&i);
+    printf("columna");
+    scanf("%i \n",&j);
+    }while(i<=filas||j<=columnas);
+    if(tablero1[i][j]=='-'){
+        printf("fallo");
+        tablero1[i][j]='*';
+        tabop1[i][j]='*';
+        printf("%d",tabop1[i][j]);   //imprime la matriz oponente con el efecto del disparo ya efectuado
+    }else{
+        do{
+        printf("tocado");
+        tablero1[i][j]='T';
+        tabop1[i][j]='T';
+        printf("%d",tabop1[i][j]);
+        if(tablero1[i][j]=='s'){
+            printf("hundido");
+            BarcosJ1.submarino = 0;
+            nbJ1=nbJ1-1;
+            tablero1[i][j]='H';
+            tabop1[i][j]='H';
+            printf("%d",tabop1[i][j]);
+        }else{
+        if(tablero1[i][j]=='a'||tablero1[i][j]=='d'||tablero1[i][j]=='f'){
+
+                   if(tablero1[i][j]=='f'||tablero1[i][j]!='*'){
+                        printf("tocado");
+                        tablero1[i][j]='T';
+                        tabop1[i][j]='T';
+                        printf("%d",tabop1[i][j]);
+                        chequeoH(tablero1[i][j],tabop1[i][j],barcosJ1,nbJ1);
+                        printf("%d",tabop1[i][j]);
+                   }
+                   if(tablero1[i][j]=='d'||tablero1[i][j]!='*'){
+                        printf("tocado");
+                        tablero1[i][j]='T';
+                        tabop1[i][j]='T';
+                        printf("%d",tabop1[i][j]);
+                        chequeoH(tablero1[i][j],tabop1[i][j],barcosJ1,nbJ1);
+                        printf("%d",tabop1[i][j]);
+                   }
+
+                    if(tablero1[i][j]=='a'||tablero1!='*'){
+                       printf("tocado");
+                        tablero2[i][j]='T';
+                        tabop1[i][j]='T'
+                        printf("%d",tabop1[i][j]);
+                        chequeoH(tablero1[i][j],tabop1[i][j],barcosJ1,nbJ1);
+                        printf("%d",tabop1[i][j]);
+                    }
+                if(tablero1[i][j]=='s'||tablero1!='*'){
+                    printf("hundido");
+                    BarcosJ1.submarino = 0;
+                    nbJ1=nbJ1-1;
+                    tablero2[i][j]='H';
+                    tabop1[i][j]='H';
+                    printf("%d",tabop1[i][j]);
+                }else{
+                    printf("fallo");
+                    tablero1[i][j]='*';
+                    tabop1[i][j]='*';
+                    printf("%d",tabop1[i][j]);
+                }
+
+                printf("introduce la posicion del disparo \n");
+                printf("fila");
+                scanf("%i \n",&i);
+                printf("columna");
+                scanf("%i \n",&j);
+        }
+        }
+                }while(tablero1[i][j]=='a'||tablero1[i][j]=='d'||tablero1[i][j]=='f'||tablero1!='*')
+
+        }
+
+    turnos++
+    if(nbJ1=0){
+        fin = 0;
+    }
+
+
+}
+
+
+void disparoIA(char **tablero1, char **tabop1, int filas, int columnas, int *turnos, Barcos *barcosJ1, int *nbJ1, int *fin){
 int i,j,ci,cj;
 i=0;
 j=0;
@@ -109,18 +206,21 @@ while(j==0||j>=10){
  if(tablero1[i][j]=='-'){
        printf("fallo");
         tablero1[i][j]='*'; 
-        printf("%d",tablero1[i][j]);
+        tabop1[i][j]='*';
+        printf("%d",tabop1[i][j]);
     }else{
         printf("tocado");
         tablero1[i][j]='T';
-        printf("%d",tablero1[i][j]);
+        tabop1[i][j]='T';
+        printf("%d",tabop1[i][j]);
         do{
         if(tablero[i][j]=='s')
             printf("hundido");
             BarcosJ1.submarino = 0;
             tablero1[i][j]='H'
             nbJ1=nbJ1-1;
-            printf("%d",tablero1[i][j]);
+            tabop1[i][j]='H';
+            printf("%d",tabop1[i][j]);
         }else{
         if(tablero1[i][j]=='a'||tablero1[i][j]=='d'||tablero1[i][j]=='f'){
                     ci=i;
@@ -137,35 +237,40 @@ while(j==0||j>=10){
                    if(tablero1[i][j]=='f'||tablero1[i][j]=!'*'){
                     printf("tocado");
                     tablero1[i][j]='T';
-                    printf("%d",tablero1[i][j]);
-                    chequeoH(tablero1[i][j],barcosJ1,nbJ1);
-                    printf("%d",tablero1[i][j]);
+                    tabop1[i][j]='T';
+                    printf("%d",tabop1[i][j]);
+                    chequeoH(tablero1[i][j],tabop1[i][j],barcosJ1,nbJ1);
+                    printf("%d",tabop1[i][j]);
                    }
                    if(tablero1[i][j]=='d'||tablero1[i][j]=!'*'){
                     printf("tocado");
                     tablero1[i][j]='T';
-                    printf("%d",tablero1[i][j]);
-                    chequeoH(tablero1[i][j],barcosJ1,nbJ1);
-                    printf("%d",tablero1[i][j]);
+                    tabop1[i][j]='T';
+                    printf("%d",tabop1[i][j]);
+                    chequeoH(tablero1[i][j],tabop1[i][j],barcosJ1,nbJ1);
+                    printf("%d",tabop1[i][j]);
                    }
 
                     if(tablero1[i][j]=='a'||tablero1[i][j]='*'){
                     printf("tocado");
                     tablero1[i][j]='T';
-                    printf("%d",tablero1[i][j]);
-                    chequeoH(tablero1[i][j],barcosJ1,nbJ1);
-                    printf("%d",tablero1[i][j]);
+                    tabop1[i][j]='T';
+                    printf("%d",tabop1[i][j]);
+                    chequeoH(tablero1[i][j],tabop1[i][j],barcosJ1,nbJ1);
+                    printf("%d",tabop1[i][j]);
                     }
                 if(tablero1[i][j]=='s'||tablero1[i][j]=!'*'){
                     printf("hundido");
                     BarcosJ1.submarino = 0;
                     nbJ1=nbJ1-1;
                     tablero1[i][j]='H';
-                    printf("%d",tablero1[i][j]);
+                    tabop1[i][j]='H';
+                    printf("%d",tabop1[i][j]);
                 }else{
                     printf("fallo");
                     tablero1[i][j]='*';
-                    printf("%d",tablero1[i][j]);
+                    tabop1[i][j]='*';
+                    printf("%d",tabop1[i][j]);
                 }
                 }
             }while(tablero1[i][j]=='a'||tablero1[i][j]=='d'||tablero1[i][j]=='f'||tablero1[i][j]=!'*')
@@ -179,14 +284,16 @@ while(j==0||j>=10){
         fin = 0;
     }
 }
-void chequeoH(char **tablero[i][j],int nBar,Barcos){
+void chequeoH(int i, int j, char **tablero, char **tabop, Barcos *barcos, int *nBar) {
     int h,l,cont;
     cont=0;
         for(h=i-1,h<=i+1,h++){
             for(l=j-1,l<=j+1,l++){
-                if(tablero[h][l]='f'||tablero[h][l]!=tablero[i][j]{
+                if(tablero[h][l]='f'||1111tablero[h][l]!=tablero[i][j]{
                     tablero[i][j]='H';
                     tablero[h][l]='H';
+                    tabop[i][j]='H';
+                    tabop[h][l]='H';
                     Barcos.fragatas=Barcos.fragatas-1;
                     nBar=nbar-1;
                 }
@@ -199,6 +306,8 @@ void chequeoH(char **tablero[i][j],int nBar,Barcos){
                                     if(tablero[h][l]='T'||tablero[h][l]!=tablero[i][j]{
                                         tablero[i][j]='H';
                                         tablero[h][l]='H';
+                                        tabop[i][j]='H';
+                                        tabop[h][l]='H';
                                         Barcos.destructores=Barcos.destructores-1;
                                         nBar=nbar-1;
                                     }
@@ -215,6 +324,8 @@ void chequeoH(char **tablero[i][j],int nBar,Barcos){
                                 if(tablero[h][l]='T'||tablero[h][l]!=tablero[i][j]){
                                     tablero[i][j]='H';
                                     tablero[h][l]='H';
+                                    tabop[i][j]='H';
+                                    tabop[h][l]='H';
                                     Barcos.acorazado=Barcos.acorazado-1;
                                     nBar=nbar-1;
                                 }
