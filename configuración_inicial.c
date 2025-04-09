@@ -4,26 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-void configuracion();
-//void jugar();
-void salir();
-
-//funciones dentro de configuración
-void introducir_datos();
-void mostrar();
-void borrar();
-void guardar(Barco *flota, int num_barcos, int flota_total,
-    Jugador jugador1, Jugador jugador2,
-    int tamaño_tablero,
-    char **j1_Flota, char **j1_Oponente,
-    char **j2_Flota, char **j2_Oponente);
-void cargar(Barco **flota, int *num_barcos, int *flota_total,
-    Jugador *jugador1, Jugador *jugador2,
-    int *tamaño_tablero,
-    char ***j1_Flota, char ***j1_Oponente,
-    char ***j2_Flota, char ***j2_Oponente);
-void volver();
+#include "configuracion_inicial.h"
+#include "juego.h"
 
 // Estructuras globales
 typedef struct {
@@ -109,10 +91,10 @@ void configuracion() {
                 introducir_datos();
                 break;
             case 2:
-                mostrar();
+                mostrar(jugador1, jugador2, tamaño_tablero);
                 break;
             case 3:
-                borrar();
+                borrar(j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamaño_tablero, flota, num_barcos);
                 break;
             case 4:
             guardar(flota, num_barcos, flota_total,
@@ -337,24 +319,45 @@ void introducir_datos() {
 //cabecera: void mostrar()
 //precondición: el usuario ha seleccionado 2 en configuración
 //postcondición: se han mostrado los datos de los barcos, jugadores y tablero
-void mostrar() {
-    printf("Id del jugador 1: %d", jugador1.Id_jugador);
-    printf("Id del jugador 2: %d", jugador2.Id_jugador);
+void mostrar(Jugador jugador1, Jugador jugador2, int tamaño_tablero) {
+    // Mostrar información de los jugadores
     printf("Nombre del jugador 1: %s\n", jugador1.Nomb_jugador);
     printf("Nombre del jugador 2: %s\n", jugador2.Nomb_jugador);
     printf("Tipo de disparo del jugador 1 (A -> automático, M -> manual): %c\n", jugador1.disparo);
     printf("Tipo de disparo del jugador 2 (A -> automático, M -> manual): %c\n", jugador2.disparo);
-    printf("Tamaño del tablero: %c\n", tamaño_tablero);
-    printf("Número de submarinos: %d", submarinos);
-    printf("Número de fragatas: %d", fragatas);
-    printf("Número de destructores: %d", destructores);
-    printf("Número de acorazados: %d", acorazados);
-}   
+    
+    // Mostrar información del tablero
+    printf("Tamaño del tablero: %d\n", tamaño_tablero);
+    
+    // Abrir y leer el archivo de barcos
+    FILE *archivo = fopen("Barcos.txt", "r");
+    if (archivo == NULL) {
+        printf("Error al abrir el archivo Barcos.txt.\n");
+        return;
+    }
+    
+    printf("\nBarcos en la flota:\n");
+    printf("------------------\n");
+    
+    char nombre[50];
+    char id;
+    int tam;
+    
+    // Mostrar información de cada barco desde el archivo
+    while (fscanf(archivo, "%[^-]-%c-%d\n", nombre, &id, &tam) == 3) {
+        printf("Nombre: %s, ID: %c, Tamaño: %d\n", nombre, id, tam);
+    }
+    
+    fclose(archivo);
+    
+    // Volver al menú de configuración
+    configuracion();
+}
 
 //cabecera: void borrar()
 //precondición: el usuario ha seleccionado 3 en configuración
 //postcondición: se han borrado los datos de los barcos, jugadores y tablero
-void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Oponente, int tamaño_tablero) {
+void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Oponente, int tamaño_tablero, Barco *flota, int num_barcos) {
     // Liberar matrices dinámicas de jugador 1
     for (int i = 0; i < tamaño_tablero; i++) {
         free(j1_Flota[i]);
@@ -371,6 +374,11 @@ void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Opon
     free(j2_Flota);
     free(j2_Oponente);
 
+    // Liberar vector dinámico de barcos
+    if (flota != NULL) {
+        free(flota);
+    }
+
     // Reiniciar estructuras (si son globales)
     jugador1.Nomb_jugador[0] = '\0';
     jugador2.Nomb_jugador[0] = '\0';
@@ -378,17 +386,23 @@ void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Opon
     jugador2.disparo = ' ';
     jugador1.empieza = 0;
     jugador2.empieza = 0;
-    jugador1.Id_jugador = 0;
-    jugador2.Id_jugador = 0;
 
-    // Reiniciar configuraciones globales (si lo son)
+    // Reiniciar configuraciones globales
     tamaño_tablero = 0;
-    submarinos = 0;
-    fragatas = 0;
-    destructores = 0;
-    acorazados = 0;
+    
+    // Eliminar los archivos .txt
+    if (remove("Barcos.txt") != 0) {
+        printf("No se pudo eliminar el archivo Barcos.txt o no existe.\n");
+    }
+
+    if (remove("Juego.txt") != 0) {
+        printf("No se pudo eliminar el archivo Juego.txt o no existe.\n");
+    }
 
     printf("Todos los datos han sido eliminados correctamente.\n");
+    
+    // Volver al menú de configuración
+    configuracion();
 }
 
 void guardar(Barco *flota, int num_barcos, int flota_total,
