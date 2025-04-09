@@ -24,7 +24,7 @@ typedef struct {
     int impactos;
     int x;
     int y;
-    char orientacion;
+    char orientacion[3];
     int cantidad;   // v (vertical), h (horizontal), d (diagonal)
 } Barco;
 
@@ -57,7 +57,7 @@ int configuracion_inicial() {
             configuracion();
             break;
         case 2:
-            //jugar();    //cambiar más tarde si la función no se llama así
+            inicializar_juego();    //cambiar más tarde si la función no se llama así
             break;
         case 3:
             salir();
@@ -191,7 +191,7 @@ void introducir_datos() {
         scanf(" %c", &continuar);
     } while (continuar == 's' || continuar == 'S')
 
-    int flota_total = 0;
+    int *flota_total = 0;
     for (int i = 0; i < num_barcos; i++) {
         flota_total += flota[i].cantidad;
     }
