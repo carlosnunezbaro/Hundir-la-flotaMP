@@ -29,7 +29,6 @@ typedef struct {
 } Barco;
 
 Jugador jugador1, jugador2;
-int tamaño_tablero;
 
 int configuracion_inicial() {
     jugador1.Id_jugador = 1;
@@ -128,6 +127,7 @@ void salir() {
 //postcondición: se han introducido los datos de los barcos, jugadores y tablero
 void introducir_datos() { 
     //Recoger datos
+    int tamaño_tablero = 0;
     printf("Introduce el nombre del jugador 1: ");
     scanf("%s", jugador1.Nomb_jugador);
     printf("Introduce el nombre del jugador 2: ");
