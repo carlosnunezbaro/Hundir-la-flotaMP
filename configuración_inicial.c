@@ -122,7 +122,7 @@ void configuracion() {
                 j2_Flota, j2_Oponente);
                 break;
             case 5:
-                //cargar();
+                cargar(&flota, &num_barcos, &flota_total, &jugador1, &jugador2, &tamaño_tablero, &j1_Flota, &j1_Oponente, &j2_Flota, &j2_Oponente);
                 break;
             case 6:
                 volver();
