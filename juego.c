@@ -173,23 +173,66 @@ void mostrar_resumen(const EstadoJuego *estado_juego) {
 // Ejecuta la lógica del juego, permitiendo al jugador realizar disparos y actualizando el estado del juego en consecuencia
 void jugar(EstadoJuego *estado_juego) {
     int x, y;
-    char continuar;
-    do {
+    char continuar = 's';
+
+    printf("La partida ha comenzado. Pulsa la barra espaciadora para abrir el menú de pausa.\n");
+
+    while (continuar == 's' || continuar == 'S') {
+        // Verificar si hay una tecla pulsada
+        if (kbhit()) {
+            char tecla = getch(); // Capturar la tecla pulsada
+
+            // Si la tecla es la barra espaciadora
+            if (tecla == ' ') {
+                menu_pausa(estado_juego);
+            }
+        }
+
+        // Turno del jugador 1
+        printf("Turno del jugador 1.\n");
         printf("Introduce las coordenadas para disparar (fila columna): ");
         scanf("%d %d", &x, &y);
-        int resultado = disparoJ1(estado_juego->tablero_jugador2, estado_juego->disparos_realizados_jugador1, estado_juego->barcos_hundidos_jugador1, estado_juego->partida_finalizada);
-        if (resultado == 1) {
-            estado_juego->barcos_hundidos_jugador1++;
-            printf("¡Tocado!\n");
-        } else if (resultado == 0) {
-            printf("Agua...\n");
+
+        // Llama a la lógica de disparo del jugador 1
+        disparoJ1(estado_juego->filas, estado_juego->columnas, estado_juego->tablero_jugador2,
+                  estado_juego->disparos_realizados_jugador1, estado_juego->barcos_hundidos_jugador2,
+                  estado_juego->partida_finalizada);
+
+        // Verificar si el jugador 1 ha ganado
+        if (estado_juego->barcos_hundidos_jugador2 == 0) {
+            printf("¡El jugador 1 ha ganado la partida!\n");
+            break;
         }
-        estado_juego->disparos_realizados_jugador1++;
+
+        // Turno del jugador 2 o IA
+        printf("Turno del jugador 2.\n");
+
+        if (estado_juego->contra_ia) {
+            // Si es contra IA, llama a disparoIA
+            disparoIA(estado_juego->tablero_jugador1, estado_juego->disparos_realizados_jugador2,
+                      estado_juego->barcos_hundidos_jugador1, estado_juego->partida_finalizada);
+        } else {
+            // Si es contra otro jugador, captura las coordenadas
+            printf("Introduce las coordenadas para disparar (fila columna): ");
+            scanf("%d %d", &x, &y);
+
+            // Llama a la lógica de disparo del jugador 2
+            disparoJ2(estado_juego->filas, estado_juego->columnas, estado_juego->tablero_jugador1,
+                      estado_juego->disparos_realizados_jugador2, estado_juego->barcos_hundidos_jugador1,
+                      estado_juego->partida_finalizada);
+        }
+
+        // Verificar si el jugador 2 (o IA) ha ganado
+        if (estado_juego->barcos_hundidos_jugador1 == 0) {
+            printf("¡El jugador 2 ha ganado la partida!\n");
+            break;
+        }
+
+        // Preguntar si se quiere continuar jugando
         printf("¿Quieres seguir jugando? (s/n): ");
         scanf(" %c", &continuar);
-    } while (continuar == 's' || continuar == 'S');
+    }
 }
-
 // Muestra el menú principal del juego, permitiendo al usuario seleccionar opciones como jugar, reiniciar, mostrar resumen, cargar el juego o salir
 void mostrar_menu(EstadoJuego *estado_juego) {
     int opcion;

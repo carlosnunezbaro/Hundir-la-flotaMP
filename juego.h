@@ -11,6 +11,7 @@ typedef struct {
     int disparos_realizados_jugador1;
     int disparos_realizados_jugador2;
     int partida_finalizada;
+    int contra_ia; // Nuevo campo: 1 si se juega contra IA, 0 si es contra otro jugador
 } EstadoJuego;
 
 typedef struct {
