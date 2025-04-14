@@ -15,7 +15,7 @@ int configuracion_inicial() {
     Barco *flota = NULL;
     int num_barcos = 0;
     int flota_total = 0;
-    int tamaño_tablero = 0;
+    int tamano_tablero = 0;
     
     // Tableros
     char **j1_Flota = NULL;
@@ -49,11 +49,11 @@ int configuracion_inicial() {
     switch (opcion) {
         case 1:
             configuracion(&jugador1, &jugador2, &flota, &num_barcos, &flota_total, 
-                         &j1_Flota, &j1_Oponente, &j2_Flota, &j2_Oponente, &tamaño_tablero);
+                         &j1_Flota, &j1_Oponente, &j2_Flota, &j2_Oponente, &tamano_tablero);
             break;
         case 2:
             inicializar_juego(&jugador1, &jugador2, flota, num_barcos, flota_total, 
-                            j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamaño_tablero);
+                            j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero);
             break;
         case 3:
             salir();
@@ -67,28 +67,28 @@ int configuracion_inicial() {
     
     // Liberar memoria de los tableros si han sido inicializados
     if (j1_Flota != NULL) {
-        for (int i = 0; i < tamaño_tablero; i++) {
+        for (int i = 0; i < tamano_tablero; i++) {
             free(j1_Flota[i]);
         }
         free(j1_Flota);
     }
     
     if (j1_Oponente != NULL) {
-        for (int i = 0; i < tamaño_tablero; i++) {
+        for (int i = 0; i < tamano_tablero; i++) {
             free(j1_Oponente[i]);
         }
         free(j1_Oponente);
     }
     
     if (j2_Flota != NULL) {
-        for (int i = 0; i < tamaño_tablero; i++) {
+        for (int i = 0; i < tamano_tablero; i++) {
             free(j2_Flota[i]);
         }
         free(j2_Flota);
     }
     
     if (j2_Oponente != NULL) {
-        for (int i = 0; i < tamaño_tablero; i++) {
+        for (int i = 0; i < tamano_tablero; i++) {
             free(j2_Oponente[i]);
         }
         free(j2_Oponente);
@@ -97,11 +97,11 @@ int configuracion_inicial() {
     return 0;
 }
 
-//cabecera: void configuracion(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamaño_tablero)
+//cabecera: void configuracion(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero)
 //precondición: el usuario ha seleccionado 1
 //postcondición: se ha configurado el juego con los datos de los barcos, jugadores y tablero
 void configuracion(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
-                  char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamaño_tablero) {
+                  char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero) {
     int opcion_configuracion;
     do {
         printf("Menú\n");
@@ -119,36 +119,36 @@ void configuracion(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num
         switch (opcion_configuracion) {
             case 1:
                 introducir_datos(jugador1, jugador2, flota, num_barcos, flota_total, 
-                                j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamaño_tablero);
+                                j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero);
                 break;
             case 2:
-                mostrar(*jugador1, *jugador2, *tamaño_tablero);
+                mostrar(*jugador1, *jugador2, *tamano_tablero);
                 break;
             case 3:
                 borrar(*j1_Flota, *j1_Oponente, *j2_Flota, *j2_Oponente, 
-                      *tamaño_tablero, *flota, *num_barcos, jugador1, jugador2);
+                      *tamano_tablero, *flota, *num_barcos, jugador1, jugador2);
                 // Reiniciar variables después de borrar
-                *tamaño_tablero = 0;
+                *tamano_tablero = 0;
                 *num_barcos = 0;
                 *flota_total = 0;
                 break;
             case 4:
                 guardar(*flota, *num_barcos, *flota_total,
                       *jugador1, *jugador2,
-                      *tamaño_tablero,
+                      *tamano_tablero,
                       *j1_Flota, *j1_Oponente,
                       *j2_Flota, *j2_Oponente);
                 break;
             case 5:
                 cargar(flota, num_barcos, flota_total, 
                      jugador1, jugador2, 
-                     tamaño_tablero, 
+                     tamano_tablero, 
                      j1_Flota, j1_Oponente, 
                      j2_Flota, j2_Oponente);
                 break;
             case 6:
                 volver(jugador1, jugador2, flota, num_barcos, flota_total, 
-                      j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamaño_tablero);
+                      j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero);
                 break;
         }
     } while (opcion_configuracion < 1 || opcion_configuracion > 6);
@@ -159,11 +159,11 @@ void salir() {
     exit(0);
 }
 
-//cabecera: void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamaño_tablero)
+//cabecera: void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero)
 //precondición: el usuario ha seleccionado 1 en configuración
 //postcondición: se han introducido los datos de los barcos, jugadores y tablero
 void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
-                     char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamaño_tablero) {
+                     char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero) {
     //Recoger datos
     printf("Introduce el nombre del jugador 1: ");
     scanf("%s", jugador1->Nomb_jugador);
@@ -179,7 +179,7 @@ void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *
     } while (jugador2->disparo != 'A' && jugador2->disparo != 'M');
 
     printf("Introduce el tamaño del tablero: ");
-    scanf("%d", tamaño_tablero);
+    scanf("%d", tamano_tablero);
 
     //Barcos
     int seguir = 1;
@@ -274,7 +274,7 @@ void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *
     // Crear e inicializar tableros
     // Liberar memoria previa si existía
     if (*j1_Flota != NULL) {
-        for (int i = 0; i < *tamaño_tablero; i++) {
+        for (int i = 0; i < *tamano_tablero; i++) {
             free((*j1_Flota)[i]);
         }
         free(*j1_Flota);
@@ -282,86 +282,86 @@ void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *
     
     // Crear nuevos tableros
     // j1_Flota
-    *j1_Flota = (char **)malloc(*tamaño_tablero * sizeof(char *));
+    *j1_Flota = (char **)malloc(*tamano_tablero * sizeof(char *));
     if (*j1_Flota == NULL) {
         printf("Error al reservar memoria\n");
         exit(1);
     }
 
-    for (int i = 0; i < *tamaño_tablero; i++) {
-        (*j1_Flota)[i] = (char *)malloc(*tamaño_tablero * sizeof(char));
+    for (int i = 0; i < *tamano_tablero; i++) {
+        (*j1_Flota)[i] = (char *)malloc(*tamano_tablero * sizeof(char));
         if ((*j1_Flota)[i] == NULL) {
             printf("Error al reservar memoria\n");
             exit(1);
         }
-        for (int j = 0; j < *tamaño_tablero; j++) {
+        for (int j = 0; j < *tamano_tablero; j++) {
             (*j1_Flota)[i][j] = '-';
         }
     }
 
     // j1_Oponente
-    *j1_Oponente = (char **)malloc(*tamaño_tablero * sizeof(char *));
+    *j1_Oponente = (char **)malloc(*tamano_tablero * sizeof(char *));
     if (*j1_Oponente == NULL) {
         printf("Error al reservar memoria\n");
         exit(1);
     }
 
-    for (int i = 0; i < *tamaño_tablero; i++) {
-        (*j1_Oponente)[i] = (char *)malloc(*tamaño_tablero * sizeof(char));
+    for (int i = 0; i < *tamano_tablero; i++) {
+        (*j1_Oponente)[i] = (char *)malloc(*tamano_tablero * sizeof(char));
         if ((*j1_Oponente)[i] == NULL) {
             printf("Error al reservar memoria\n");
             exit(1);
         }
-        for (int j = 0; j < *tamaño_tablero; j++) {
+        for (int j = 0; j < *tamano_tablero; j++) {
             (*j1_Oponente)[i][j] = '-';
         }
     }
 
     // j2_Flota
-    *j2_Flota = (char **)malloc(*tamaño_tablero * sizeof(char *));
+    *j2_Flota = (char **)malloc(*tamano_tablero * sizeof(char *));
     if (*j2_Flota == NULL) {
         printf("Error al reservar memoria\n");
         exit(1);
     }
 
-    for (int i = 0; i < *tamaño_tablero; i++) {
-        (*j2_Flota)[i] = (char *)malloc(*tamaño_tablero * sizeof(char));
+    for (int i = 0; i < *tamano_tablero; i++) {
+        (*j2_Flota)[i] = (char *)malloc(*tamano_tablero * sizeof(char));
         if ((*j2_Flota)[i] == NULL) {
             printf("Error al reservar memoria\n");
             exit(1);
         }
-        for (int j = 0; j < *tamaño_tablero; j++) {
+        for (int j = 0; j < *tamano_tablero; j++) {
             (*j2_Flota)[i][j] = '-';
         }
     }
 
     // j2_Oponente
-    *j2_Oponente = (char **)malloc(*tamaño_tablero * sizeof(char *));
+    *j2_Oponente = (char **)malloc(*tamano_tablero * sizeof(char *));
     if (*j2_Oponente == NULL) {
         printf("Error al reservar memoria\n");
         exit(1);
     }
 
-    for (int i = 0; i < *tamaño_tablero; i++) {
-        (*j2_Oponente)[i] = (char *)malloc(*tamaño_tablero * sizeof(char));
+    for (int i = 0; i < *tamano_tablero; i++) {
+        (*j2_Oponente)[i] = (char *)malloc(*tamano_tablero * sizeof(char));
         if ((*j2_Oponente)[i] == NULL) {
             printf("Error al reservar memoria\n");
             exit(1);
         }
-        for (int j = 0; j < *tamaño_tablero; j++) {
+        for (int j = 0; j < *tamano_tablero; j++) {
             (*j2_Oponente)[i][j] = '-';
         }
     }
 
     // Volver al menú de configuración
     configuracion(jugador1, jugador2, flota, num_barcos, flota_total, 
-                 j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamaño_tablero);
+                 j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero);
 }
 
-//cabecera: mostrar(Jugador jugador1, Jugador jugador2, int tamaño_tablero)
+//cabecera: mostrar(Jugador jugador1, Jugador jugador2, int tamano_tablero)
 //precondición: el usuario ha seleccionado 2 en configuración
 //postcondición: se han mostrado los datos de los barcos, jugadores y tablero
-void mostrar(Jugador jugador1, Jugador jugador2, int tamaño_tablero) {
+void mostrar(Jugador jugador1, Jugador jugador2, int tamano_tablero) {
     // Mostrar información de los jugadores
     printf("Nombre del jugador 1: %s\n", jugador1.Nomb_jugador);
     printf("Nombre del jugador 2: %s\n", jugador2.Nomb_jugador);
@@ -369,7 +369,7 @@ void mostrar(Jugador jugador1, Jugador jugador2, int tamaño_tablero) {
     printf("Tipo de disparo del jugador 2 (A -> automático, M -> manual): %c\n", jugador2.disparo);
     
     // Mostrar información del tablero
-    printf("Tamaño del tablero: %d\n", tamaño_tablero);
+    printf("Tamaño del tablero: %d\n", tamano_tablero);
     
     // Abrir y leer el archivo de barcos
     FILE *archivo = fopen("Barcos.txt", "r");
@@ -393,13 +393,13 @@ void mostrar(Jugador jugador1, Jugador jugador2, int tamaño_tablero) {
     fclose(archivo);
 }
 
-//cabecera: void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Oponente, int tamaño_tablero, Barco *flota, int num_barcos, Jugador *jugador1, Jugador *jugador2)
+//cabecera: void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Oponente, int tamano_tablero, Barco *flota, int num_barcos, Jugador *jugador1, Jugador *jugador2)
 //precondición: el usuario ha seleccionado 3 en configuración
 //postcondición: se han borrado los datos de los barcos, jugadores y tablero
 void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Oponente, 
-           int tamaño_tablero, Barco *flota, int num_barcos, Jugador *jugador1, Jugador *jugador2) {
+           int tamano_tablero, Barco *flota, int num_barcos, Jugador *jugador1, Jugador *jugador2) {
     // Liberar matrices dinámicas de jugador 1
-    for (int i = 0; i < tamaño_tablero; i++) {
+    for (int i = 0; i < tamano_tablero; i++) {
         free(j1_Flota[i]);
         free(j1_Oponente[i]);
     }
@@ -407,7 +407,7 @@ void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Opon
     free(j1_Oponente);
 
     // Liberar matrices dinámicas de jugador 2
-    for (int i = 0; i < tamaño_tablero; i++) {
+    for (int i = 0; i < tamano_tablero; i++) {
         free(j2_Flota[i]);
         free(j2_Oponente[i]);
     }
@@ -439,12 +439,12 @@ void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Opon
     printf("Todos los datos han sido eliminados correctamente.\n");
 }
 
-//cabecera: guardar(Barco *flota, int num_barcos, int flota_total,Jugador jugador1, Jugador jugador2,int tamaño_tablero,char **j1_Flota, char **j1_Oponente,char **j2_Flota, char **j2_Oponente)
+//cabecera: guardar(Barco *flota, int num_barcos, int flota_total,Jugador jugador1, Jugador jugador2,int tamano_tablero,char **j1_Flota, char **j1_Oponente,char **j2_Flota, char **j2_Oponente)
 //precondición: el usuario ha seleccionado 4 en configuración
 //postcondición: se han guardado los datos de los barcos, jugadores y tablero
 void guardar(Barco *flota, int num_barcos, int flota_total,
            Jugador jugador1, Jugador jugador2,
-           int tamaño_tablero,
+           int tamano_tablero,
            char **j1_Flota, char **j1_Oponente,
            char **j2_Flota, char **j2_Oponente) {
 
@@ -456,32 +456,23 @@ void guardar(Barco *flota, int num_barcos, int flota_total,
     }
 
     //Datos generales
-    fprintf(archivo, "%d-%d-%d\n", tamaño_tablero, flota_total, num_barcos);
+    fprintf(archivo, "%d-%d-%d\n", tamano_tablero, flota_total, num_barcos);
     
     // Lista de tipos de barcos
     for (int i = 0; i < num_barcos; i++) {
         fprintf(archivo, "%c-%d\n", flota[i].Id_barco, flota[i].cantidad);
     }
     
-    // Función para imprimir tableros
-    void imprimir_tablero(FILE *f, char **tablero, int tam) {
-        for (int i = 0; i < tam; i++) {
-            for (int j = 0; j < tam; j++) {
-                fprintf(f, "%c ", tablero[i][j]);
-            }
-            fprintf(f, "\n");
-        }
-    }
     
     // Jugador 1
     fprintf(archivo, "1-%s-0-%c-0\n", jugador1.Nomb_jugador, jugador1.disparo);
-    imprimir_tablero(archivo, j1_Flota, tamaño_tablero);
-    imprimir_tablero(archivo, j1_Oponente, tamaño_tablero);
+    imprimir_tablero(archivo, j1_Flota, tamano_tablero);
+    imprimir_tablero(archivo, j1_Oponente, tamano_tablero);
 
     // Jugador 2
     fprintf(archivo, "2-%s-0-%c-0\n", jugador2.Nomb_jugador, jugador2.disparo);
-    imprimir_tablero(archivo, j2_Flota, tamaño_tablero);
-    imprimir_tablero(archivo, j2_Oponente, tamaño_tablero);
+    imprimir_tablero(archivo, j2_Flota, tamano_tablero);
+    imprimir_tablero(archivo, j2_Oponente, tamano_tablero);
 
     fclose(archivo);
     printf("Archivo 'Juego.txt' guardado correctamente.\n");
@@ -492,7 +483,7 @@ void guardar(Barco *flota, int num_barcos, int flota_total,
 //postcondición: se han cargado los datos de los barcos, jugadores y tablero
 void cargar(Barco **flota, int *num_barcos, int *flota_total,
           Jugador *jugador1, Jugador *jugador2,
-          int *tamaño_tablero,
+          int *tamano_tablero,
           char ***j1_Flota, char ***j1_Oponente,
           char ***j2_Flota, char ***j2_Oponente) {
 
@@ -503,7 +494,7 @@ void cargar(Barco **flota, int *num_barcos, int *flota_total,
     }
 
     // Leer datos generales
-    fscanf(archivo, "%d-%d-%d\n", tamaño_tablero, flota_total, num_barcos);
+    fscanf(archivo, "%d-%d-%d\n", tamano_tablero, flota_total, num_barcos);
 
     // Liberar memoria previa si existía
     if (*flota != NULL) {
@@ -531,17 +522,17 @@ void cargar(Barco **flota, int *num_barcos, int *flota_total,
 
     // Liberar memoria previa si existía
     if (*j1_Flota != NULL) {
-        for (int i = 0; i < *tamaño_tablero; i++) {
+        for (int i = 0; i < *tamano_tablero; i++) {
             free((*j1_Flota)[i]);
         }
         free(*j1_Flota);
     }
     
     // Matriz Flota jugador 1
-    *j1_Flota = (char **)malloc((*tamaño_tablero) * sizeof(char *));
-    for (int i = 0; i < *tamaño_tablero; i++) {
-        (*j1_Flota)[i] = (char *)malloc((*tamaño_tablero) * sizeof(char));
-        for (int j = 0; j < *tamaño_tablero; j++) {
+    *j1_Flota = (char **)malloc((*tamano_tablero) * sizeof(char *));
+    for (int i = 0; i < *tamano_tablero; i++) {
+        (*j1_Flota)[i] = (char *)malloc((*tamano_tablero) * sizeof(char));
+        for (int j = 0; j < *tamano_tablero; j++) {
             fscanf(archivo, " %c", &((*j1_Flota)[i][j]));
         }
         fscanf(archivo, "\n");
@@ -549,17 +540,17 @@ void cargar(Barco **flota, int *num_barcos, int *flota_total,
 
     // Liberar memoria previa si existía
     if (*j1_Oponente != NULL) {
-        for (int i = 0; i < *tamaño_tablero; i++) {
+        for (int i = 0; i < *tamano_tablero; i++) {
             free((*j1_Oponente)[i]);
         }
         free(*j1_Oponente);
     }
     
     // Matriz Oponente jugador 1
-    *j1_Oponente = (char **)malloc((*tamaño_tablero) * sizeof(char *));
-    for (int i = 0; i < *tamaño_tablero; i++) {
-        (*j1_Oponente)[i] = (char *)malloc((*tamaño_tablero) * sizeof(char));
-        for (int j = 0; j < *tamaño_tablero; j++) {
+    *j1_Oponente = (char **)malloc((*tamano_tablero) * sizeof(char *));
+    for (int i = 0; i < *tamano_tablero; i++) {
+        (*j1_Oponente)[i] = (char *)malloc((*tamano_tablero) * sizeof(char));
+        for (int j = 0; j < *tamano_tablero; j++) {
             fscanf(archivo, " %c", &((*j1_Oponente)[i][j]));
         }
         fscanf(archivo, "\n");
@@ -574,17 +565,17 @@ void cargar(Barco **flota, int *num_barcos, int *flota_total,
 
     // Liberar memoria previa si existía
     if (*j2_Flota != NULL) {
-        for (int i = 0; i < *tamaño_tablero; i++) {
+        for (int i = 0; i < *tamano_tablero; i++) {
             free((*j2_Flota)[i]);
         }
         free(*j2_Flota);
     }
     
     // Matriz Flota jugador 2
-    *j2_Flota = (char **)malloc((*tamaño_tablero) * sizeof(char *));
-    for (int i = 0; i < *tamaño_tablero; i++) {
-        (*j2_Flota)[i] = (char *)malloc((*tamaño_tablero) * sizeof(char));
-        for (int j = 0; j < *tamaño_tablero; j++) {
+    *j2_Flota = (char **)malloc((*tamano_tablero) * sizeof(char *));
+    for (int i = 0; i < *tamano_tablero; i++) {
+        (*j2_Flota)[i] = (char *)malloc((*tamano_tablero) * sizeof(char));
+        for (int j = 0; j < *tamano_tablero; j++) {
             fscanf(archivo, " %c", &((*j2_Flota)[i][j]));
         }
         fscanf(archivo, "\n");
@@ -592,17 +583,17 @@ void cargar(Barco **flota, int *num_barcos, int *flota_total,
 
     // Liberar memoria previa si existía
     if (*j2_Oponente != NULL) {
-        for (int i = 0; i < *tamaño_tablero; i++) {
+        for (int i = 0; i < *tamano_tablero; i++) {
             free((*j2_Oponente)[i]);
         }
         free(*j2_Oponente);
     }
     
     // Matriz Oponente jugador 2
-    *j2_Oponente = (char **)malloc((*tamaño_tablero) * sizeof(char *));
-    for (int i = 0; i < *tamaño_tablero; i++) {
-        (*j2_Oponente)[i] = (char *)malloc((*tamaño_tablero) * sizeof(char));
-        for (int j = 0; j < *tamaño_tablero; j++) {
+    *j2_Oponente = (char **)malloc((*tamano_tablero) * sizeof(char *));
+    for (int i = 0; i < *tamano_tablero; i++) {
+        (*j2_Oponente)[i] = (char *)malloc((*tamano_tablero) * sizeof(char));
+        for (int j = 0; j < *tamano_tablero; j++) {
             fscanf(archivo, " %c", &((*j2_Oponente)[i][j]));
         }
         fscanf(archivo, "\n");
@@ -611,6 +602,17 @@ void cargar(Barco **flota, int *num_barcos, int *flota_total,
 //cabecera: void volver()
 //precondición: el usuario ha seleccionado 6 en configuración
 //postcondición: se ha vuelto al menú principal
-void volver() {
+void volver(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
+    char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero) {
     configuracion_inicial();
+}
+
+// Función para imprimir tableros
+void imprimir_tablero(FILE *f, char **tablero, int tam) {
+    for (int i = 0; i < tam; i++) {
+        for (int j = 0; j < tam; j++) {
+            fprintf(f, "%c ", tablero[i][j]);
+        }
+        fprintf(f, "\n");
+    }
 }
