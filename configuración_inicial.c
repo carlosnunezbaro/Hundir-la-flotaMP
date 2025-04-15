@@ -26,7 +26,11 @@ int configuracion_inicial() {
     // Asignar IDs a los jugadores
     jugador1.Id_jugador = 1;
     jugador2.Id_jugador = 2;
-    
+
+    //Estructura para juego.h
+    EstadoJuego estado_juego;
+    ConfiguracionJuego configuracion;
+
     // Mensaje de bienvenida
     printf("Bienvenido al juego\n");
     printf("HUNDIR LA FLOTA\n");
@@ -52,8 +56,7 @@ int configuracion_inicial() {
                          &j1_Flota, &j1_Oponente, &j2_Flota, &j2_Oponente, &tamano_tablero);
             break;
         case 2:
-            inicializar_juego(&jugador1, &jugador2, flota, num_barcos, flota_total, 
-                            j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero);
+            inicializar_juego(&estado_juego, &configuracion);
             break;
         case 3:
             salir();
@@ -119,7 +122,7 @@ void configuracion(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num
         switch (opcion_configuracion) {
             case 1:
                 introducir_datos(jugador1, jugador2, flota, num_barcos, flota_total, 
-                                j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero);
+                                j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero, &configuracion, &estado_juego);
                 break;
             case 2:
                 mostrar(*jugador1, *jugador2, *tamano_tablero);
@@ -163,23 +166,34 @@ void salir() {
 //precondición: el usuario ha seleccionado 1 en configuración
 //postcondición: se han introducido los datos de los barcos, jugadores y tablero
 void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
-                     char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero) {
+                     char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero,
+                     ConfiguracionJuego *configuracion,EstadoJuego *estado_juego) {
+    
+    //Estructuras para el módulo "juego"
+    EstadoJuego estado_juego;
+    ConfiguracionJuego configuracion;
+
     //Recoger datos
     printf("Introduce el nombre del jugador 1: ");
     scanf("%s", jugador1->Nomb_jugador);
+    strcpy(jugador1->Nomb_jugador, configuracion->nombre_jugador1);
     printf("Introduce el nombre del jugador 2: ");
     scanf("%s", jugador2->Nomb_jugador);
+    strcpy(jugador2->Nomb_jugador, configuracion->nombre_jugador2);
     printf("Introduce el tipo de disparo del jugador 1 (A o M): ");
     do {
         scanf(" %c", &jugador1->disparo);
     } while (jugador1->disparo != 'A' && jugador1->disparo != 'M');
+    jugador1->disparo = configuracion->disparo_jugador1;
     printf("Introduce el tipo de disparo del jugador 2 (A o M): ");
     do {
         scanf(" %c", &jugador2->disparo);
     } while (jugador2->disparo != 'A' && jugador2->disparo != 'M');
+    jugador2->disparo = configuracion->disparo_jugador2;
 
     printf("Introduce el tamaño del tablero: ");
     scanf("%d", tamano_tablero);
+    configuracion->tamano_tablero = *tamano_tablero;
 
     //Barcos
     int seguir = 1;

@@ -35,7 +35,8 @@ void configuracion(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num
                   char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero);
 void salir(void);
 void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
-                     char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero);
+                     char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero,
+                     ConfiguracionJuego *configuracion,EstadoJuego *estado_juego);
 void mostrar(Jugador jugador1, Jugador jugador2, int tamano_tablero);
 void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Oponente, 
            int tamano_tablero, Barco *flota, int num_barcos, Jugador *jugador1, Jugador *jugador2);
