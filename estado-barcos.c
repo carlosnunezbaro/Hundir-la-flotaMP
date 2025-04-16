@@ -30,7 +30,7 @@ int Imprimir_Tablero(int filas, int columnas, char **tablero) {
 }
 
 int Intentar_Colocar(int filas, int columnas, char **tablero, Barco *barco) {
-    if (strcmp(barco->orientacion, "H") == 0) {
+    if (strcmp(barco->orientacion, "H") == '-') {
         if (barco->y + barco->longitud > columnas) return 0;
         for (int i = 0; i < barco->longitud; i++) {
             if (tablero[barco->x][barco->y + i] != '-') return 0;
@@ -78,7 +78,7 @@ int Colocar_Barco(int filas, int columnas, char **tablero, Barco *barco) {
     if (Intentar_Colocar(filas, columnas, tablero, barco)) {
         for (int i = 0; i < barco->longitud; i++) {
             if (strcmp(barco->orientacion, "H") == 0) tablero[barco->x][barco->y + i] = 'B';
-            else if (strcmp(barco->orientacion, "H-") == 0) tablero[barco->x][barco->y - i] = 'B';
+            else if (strcmp(barco->orientacion, "H-") == 0 ) tablero[barco->x][barco->y - i] = 'B';
             else if (strcmp(barco->orientacion, "V") == 0) tablero[barco->x + i][barco->y] = 'B';
             else if (strcmp(barco->orientacion, "V-") == 0) tablero[barco->x - i][barco->y] = 'B';
             else if (strcmp(barco->orientacion, "D") == 0) tablero[barco->x + i][barco->y + i] = 'B';
@@ -95,6 +95,7 @@ int Colocar_Barco(int filas, int columnas, char **tablero, Barco *barco) {
 int Barcos_Pegados(int filas, int columnas, char **tablero, Barco *barco) {
     int inicial_x, inicial_y, final_x, final_y;
 
+    // Calcular los límites iniciales y finales según la orientación del barco
     if (strcmp(barco->orientacion, "H") == 0) {
         inicial_x = (barco->x > 0) ? barco->x - 1 : 0;
         inicial_y = (barco->y > 0) ? barco->y - 1 : 0;
@@ -142,12 +143,11 @@ int Barcos_Pegados(int filas, int columnas, char **tablero, Barco *barco) {
     // Verificar el área alrededor del barco
     for (int i = inicial_x; i <= final_x; i++) {
         for (int j = inicial_y; j <= final_y; j++) {
-            if (tablero[i][j] != ' ') return 0;
+            if (tablero[i][j] != '-') return 0; // Hay un barco cerca
         }
     }
-    return 1;
+    return 1; // No hay barcos cercanos
 }
-
 
 int Colocar_Barcos_BOT(int filas, int columnas, char **tablero, int flota_total, Barco *barcos) {
     srand(time(NULL));
