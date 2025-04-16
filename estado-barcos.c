@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include "configuracion_inicial.h"
 #include "estado-barcos.h"
 
 typedef struct {
@@ -13,7 +14,7 @@ typedef struct {
 } Barco;
 
 int Imprimir_Tablero(int filas, int columnas, char **tablero);
-int Intentar_Colocar(int filas, int columnas, char **tablero, int flota_total, Barco *barco);
+int Intentar_Colocar(int filas, int columnas, char **tablero, Barco *barco);
 int Colocar_Barco(int filas, int columnas, char **tablero, Barco *barco);
 int Barcos_Pegados(int filas, int columnas, char **tablero, Barco *barco);
 int Colocar_Barcos_BOT(int filas, int columnas, char **tablero, int flota_total, Barco *barcos);
@@ -28,7 +29,7 @@ int Imprimir_Tablero(int filas, int columnas, char **tablero) {
     return 0;
 }
 
-int Intentar_Colocar(int filas, int columnas, char **tablero, int flota_total, Barco *barco) {
+int Intentar_Colocar(int filas, int columnas, char **tablero, Barco *barco) {
     if (strcmp(barco->orientacion, "H") == 0) {
         if (barco->y + barco->longitud > columnas) return 0;
         for (int i = 0; i < barco->longitud; i++) {
@@ -74,7 +75,7 @@ int Intentar_Colocar(int filas, int columnas, char **tablero, int flota_total, B
 }
 
 int Colocar_Barco(int filas, int columnas, char **tablero, Barco *barco) {
-    if (Intentar_Colocar(filas, columnas, tablero, 0, barco)) {
+    if (Intentar_Colocar(filas, columnas, tablero, barco)) {
         for (int i = 0; i < barco->longitud; i++) {
             if (strcmp(barco->orientacion, "H") == 0) tablero[barco->x][barco->y + i] = 'B';
             else if (strcmp(barco->orientacion, "H-") == 0) tablero[barco->x][barco->y - i] = 'B';
@@ -163,7 +164,7 @@ int Colocar_Barcos_BOT(int filas, int columnas, char **tablero, int flota_total,
             const char *orientaciones[] = {"H", "H-", "V", "V-", "D", "D-", "D1", "D1-"};
             strcpy(barco->orientacion, orientaciones[rand() % 8]);
 
-            if (Intentar_Colocar(filas, columnas, tablero, flota_total, barco) && Barcos_Pegados(filas, columnas, tablero, barco)) {
+            if (Intentar_Colocar(filas, columnas, tablero, barco) && Barcos_Pegados(filas, columnas, tablero, barco)) {
                 Colocar_Barco(filas, columnas, tablero, barco);
                 colocado = 1;
             }
