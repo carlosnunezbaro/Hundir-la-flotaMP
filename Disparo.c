@@ -302,7 +302,7 @@ while(j==0||j>=10){
         fin = 0;
     }
 }
-void chequeoH(int i, int j, char **j1_Flota, char **j1_Oponente, Barcos *barcos, int *nBar){
+void chequeoH(int i, int j, char **j_Flota, char **j_Oponente, Barcos *barcos, int *nBar){
     int h,l,cont;
     cont=0;
         for(h=i-1,h<=i+1,h++){
