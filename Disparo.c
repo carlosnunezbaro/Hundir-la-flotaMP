@@ -3,23 +3,17 @@
 #include "Disparo.h"
 #include "estado-barcos.h"
 #include "barcos.h"
-
-
-typedef struct{
-    int fragata=3;
-    int acorazado=1;
-    int destructor=2;
-    int submarino=1;
-}BarcosJ1,BarcosJ2;
+#include "juego.h"
 
 
 void inicializador(){
-    int turnos=1;
-    int fin=1;
-    int nbJ1,nbJ2=7;
-    }
+    int turnos = 1;
+    int fin = 1;
+    int *nbJ1 = *num_barcos;
+    int *nbJ2 = *num_barcos;
+}
 
-void disparoJ1(int filas,int columnas,char **tablero2,int turnos,BarcosJ2,int nbJ2,int fin){// la dimensión de la matriz (1 porque es cuadrada
+void disparoJ1(int filas, int columnas, char **j2_Flota, char **j2_Oponente, int *turnos, Barcos *barcosJ2, int *nbJ2, int *fin){
     int i,j = 0;
     printf("introduce la posicion del disparo \n");
     do{
@@ -28,56 +22,64 @@ void disparoJ1(int filas,int columnas,char **tablero2,int turnos,BarcosJ2,int nb
     printf("columna");
     scanf("%i \n",&j);
     }while(i<=filas||j<=columnas);
-    if(tablero2[i][j]=='-'){
+    if(j2_Flota[i][j]=='-'){
         printf("fallo");
-        tablero2[i][j]='*';
-        printf("%d",tablero2[i][j]);   \\imprime la matriz oponente con el efecto del disparo ya efectuado
+        j2_Flota[i][j]='*';
+        j2_Oponente[i][j]='*';
+        *disparosJ1 = *disparosJ1+1;
+        printf("%d",j2_Oponente[i][j]);   // imprime la matriz oponente con el efecto del disparo ya efectuado
     }else{
         do{
         printf("tocado");
-        tablero2[i][j]='T';
-        printf("%d",tablero2[i][j]);
-        if(tablero2[i][j]=='s'){
+        j2_Flota[i][j]='T'; 
+        j2_Oponente[i][j]='T';
+        printf("%d",j2_Oponente[i][j]);
+        if(j2_Flota[i][j]=='s'){
             printf("hundido");
-            BarcosJ2.submarino = 0;
-            nbJ2=nbJ2-1;
-            tablero2[i][j]='H';
-            printf("%d",tablero2[i][j]);
+            (*nbJ2) = (*nbJ2) - 1;
+            j2_Flota[i][j]='H';
+            j2_Oponente[i][j]='H';
+            *disparosJ1 = *disparosJ1+1;
+            printf("%d",j2_Oponente[i][j]);
         }else{
-        if(tablero2[i][j]=='a'||tablero2[i][j]=='d'||tablero2[i][j]=='f'){
+        if(j2_Flota[i][j]=='a'||j2_Flota[i][j]=='d'||j2_Flota[i][j]=='f'){
 
-                   if(tablero2[i][j]=='f'||tablero2[i][j]!='*'){
+                   if(j2_Flota[i][j]=='f'||j2_Flota[i][j]!='*'){
                         printf("tocado");
-                        tablero2[i][j]='T';
-                        printf("%d",tablero2[i][j]);
-                        chequeoH(tablero2[i][j],barcosJ2,nbJ2);
-                        printf("%d",tablero2[i][j]);
+                        j2_Flota[i][j]='T';
+                        j2_Oponente[i][j]='T';
+                        printf("%d",j2_Oponente[i][j]);
+                        chequeoH(j2_Flota[i][j],j2_Oponente[i][j],barcosJ2,nbJ2);
+                        printf("%d",j2_Oponente[i][j]);
                    }
-                   if(tablero2[i][j]=='d'||tablero2[i][j]!='*'){
+                   if(j2_Flota[i][j]=='d'||j2_Flota[i][j]!='*'){
                         printf("tocado");
-                        tablero2[i][j]='T';
-                        printf("%d",tablero2[i][j]);
-                        chequeoH(tablero2[i][j],barcosJ2,nbJ2);
-                        printf("%d",tablero2[i][j]);
+                        j2_Flota[i][j]='T';
+                        j2_Oponente[i][j]='T';
+                        printf("%d",j2_Oponente[i][j]);
+                        chequeoH(j2_Flota[i][j],j2_Oponente[i][j],barcosJ2,nbJ2);
+                        printf("%d",j2_Oponente[i][j]);
                    }
 
-                    if(tablero2[i][j]=='a'||tablero2!='*'){
+                    if(j2_Flota[i][j]=='a'||j2_Flota![i][j]='*' ){
                        printf("tocado");
-                        tablero2[i][j]='T';
-                        printf("%d",tablero2[i][j]);
-                        chequeoH(tablero2[i][j],barcosJ2,nbJ2);
-                        printf("%d",tablero2[i][j]);
+                        j2_Flota[i][j]='T';
+                        j2_Oponente[i][j]='T';
+                        printf("%d",j2_Oponente[i][j]);
+                        chequeoH(j2_Flota[i][j],j2_Oponente[i][j],barcosJ2,nbJ2);
+                        printf("%d",j2_Oponente[i][j]);
                     }
-                if(tablero2[i][j]=='s'||tablero2!='*'){
+                if(j2_Flota[i][j]=='s'||j2_Flota![i][j]='*'){
                     printf("hundido");
-                    BarcosJ2.submarino = 0;
-                    nbJ2=nbJ2-1;
-                    tablero2[i][j]='H';
-                    printf("%d",tablero2[i][j]);;
+                    (*nbJ2) = (*nbJ2) - 1;
+                    j2_Flota[i][j]='H';
+                    j2_Oponente[i][j]='H';
+                    printf("%d",j2_Oponente[i][j]);
                 }else{
                     printf("fallo");
-                    tablero2[i][j]='*';
-                    printf("%d",tablero2[i][j]); 
+                    j2_Flota[i][j]='*';
+                    j2_Oponente[i][j]='*';
+                    printf("%d",j2_Oponente[i][j]); 
                 }
 
                 printf("introduce la posicion del disparo \n");
@@ -85,90 +87,211 @@ void disparoJ1(int filas,int columnas,char **tablero2,int turnos,BarcosJ2,int nb
                 scanf("%i \n",&i);
                 printf("columna");
                 scanf("%i \n",&j);
+                *disparosJ1 = *disparosJ1+1;
         }
         }
-                }while(tablero2[i][j]=='a'||tablero2[i][j]=='d'||tablero2[i][j]=='f'||tablero2!='*')
+                }while(j2_Flota[i][j]=='a'||j2_Flota[i][j]=='d'||j2_Flota[i][j]=='f'||j2_Flota![i][j]='*' )
 
         }
 
-    turnos++
+    turnos++;
     if(nbJ2=0){
         fin = 0;
     }
 }
-void disparoIA(char **tablero1,int turnos,BarcosJ2,int nbJ1,int fin){
+void disparoJ2(int filas, int columnas, char **j1_Flota, char **j1_Oponente, int *turnos, Barcos *barcosJ1, int *nbJ1, int *fin){
+    int i,j = 0;
+    printf("introduce la posicion del disparo \n");
+    do{
+    printf("fila");
+    scanf("%i \n",&i);
+    printf("columna");
+    scanf("%i \n",&j);
+    }while(i<=filas||j<=columnas);
+    if(j1_Flota[i][j]=='-'){
+        printf("fallo");
+        j1_Flota[i][j]='*';
+        j1_Oponente[i][j]='*';
+        *disparosJ2 = *disparosJ2+1;
+        printf("%d",j1_Oponente[i][j]);   // imprime la matriz oponente con el efecto del disparo ya efectuado
+    }else{
+        do{
+        printf("tocado");
+        j1_Flota[i][j]='T';
+        j1_Oponente[i][j]='T';
+        printf("%d",j1_Oponente[i][j]);
+        if(j1_Flota[i][j]=='s'){
+            printf("hundido");
+            BarcosJ1.submarino = 0;
+            nbJ1=nbJ1-1;
+            j1_Flota[i][j]='H';
+            j1_Oponente[i][j]='H';
+            *disparosJ2 = *disparosJ2+1;
+            printf("%d",j1_Oponente[i][j]);
+        }else{
+        if(j1_Flota[i][j]=='a'||j1_Flota[i][j]=='d'||j1_Flota[i][j]=='f'){
+
+                   if(j1_Flota[i][j]=='f'||j1_Flota[i][j]!='*'){
+                        printf("tocado");
+                        j1_Flota[i][j]='T';
+                        j1_Oponente[i][j]='T';
+                        printf("%d",j1_Oponente[i][j]);
+                        chequeoH(j1_Flota[i][j],j1_Oponente[i][j],barcosJ1,nbJ1);
+                        printf("%d",j1_Oponente[i][j]);
+                   }
+                   if(j1_Flota[i][j]=='d'||j1_Flota[i][j]!='*'){
+                        printf("tocado");
+                        j1_Flota[i][j]='T';
+                        j1_Oponente[i][j]='T';
+                        printf("%d",j1_Oponente[i][j]);
+                        chequeoH(j1_Flota[i][j],j1_Oponente[i][j],barcosJ1,nbJ1);
+                        printf("%d",j1_Oponente[i][j]);
+                   }
+
+                    if(j1_Flota[i][j]=='a'||j1_Flota!='*'){
+                       printf("tocado");
+                        j2_Flota[i][j]='T';
+                        j1_Oponente[i][j]='T'
+                        printf("%d",j1_Oponente[i][j]);
+                        chequeoH(j1_Flota[i][j],j1_Oponente[i][j],barcosJ1,nbJ1);
+                        printf("%d",j1_Oponente[i][j]);
+                    }
+                if(j1_Flota[i][j]=='s'||j1_Flota!='*'){
+                    printf("hundido");
+                    BarcosJ1.submarino = 0;
+                    nbJ1=nbJ1-1;
+                    j2_Flota[i][j]='H';
+                    j1_Oponente[i][j]='H';
+                    printf("%d",j1_Oponente[i][j]);
+                }else{
+                    printf("fallo");
+                    j1_Flota[i][j]='*';
+                    j1_Oponente[i][j]='*';
+                    printf("%d",j1_Oponente[i][j]);
+                }
+
+                printf("introduce la posicion del disparo \n");
+                printf("fila");
+                scanf("%i \n",&i);
+                printf("columna");
+                scanf("%i \n",&j);
+                *disparosJ2 = *disparosJ2+1;
+        }
+        }
+                }while(j1_Flota[i][j]=='a'||j1_Flota[i][j]=='d'||j1_Flota[i][j]=='f'||j1_Flota!='*')
+
+        }
+
+    turnos++;
+    if(nbJ1=0){
+        fin = 0;
+    }
+
+
+}
+
+
+void disparoIA(char **j1_Flota, char **j1_Oponente, int filas, int columnas, int *turnos, Barcos *barcosJ1, int *nbJ1, int *fin){
 int i,j,ci,cj;
 i=0;
 j=0;
-while(i==0||i>=10){    \\selecciona una posicion aleatoria de la matriz
+while(i==0||i>=10){    \\ selecciona una posicion aleatoria de la matriz
     i=rand()%11;
 }
 while(j==0||j>=10){
     j=rand()%11;
 }
- if(tablero1[i][j]=='-'){
+    if(jugador1.disparo='A'){
+        *disparosJ1 =  *disparosJ1+1;
+    }else{
+        *disparosJ2 =  *disparosJ2+1;
+    }
+ if(j1_Flota[i][j]=='-'){
        printf("fallo");
-        tablero1[i][j]='*'; 
-        printf("%d",tablero1[i][j]);
+        j1_Flota[i][j]='*'; 
+        j1_Oponente[i][j]='*';
+        if(jugador1.disparo='A'){
+        *disparosJ1 =  *disparosJ1+1;
+    }else{
+        *disparosJ2 =  *disparosJ2+1;
+    }
+        printf("%d",j1_Oponente[i][j]);
     }else{
         printf("tocado");
-        tablero1[i][j]='T';
-        printf("%d",tablero1[i][j]);
+        j1_Flota[i][j]='T';
+        j1_Oponente[i][j]='T';
+        printf("%d",j1_Oponente[i][j]);
         do{
-        if(tablero[i][j]=='s')
+        if(j1_Flota[i][j]=='s')
             printf("hundido");
             BarcosJ1.submarino = 0;
-            tablero1[i][j]='H'
+            j1_Flota[i][j]='H'
             nbJ1=nbJ1-1;
-            printf("%d",tablero1[i][j]);
+            j1_Oponente[i][j]='H';
+            if(jugador1.disparo='A'){
+            *disparosJ1 =  *disparosJ1+1;
+                }else{
+            *disparosJ2 =  *disparosJ2+1;
+                }
+            printf("%d",j1_Oponente[i][j]);
         }else{
-        if(tablero1[i][j]=='a'||tablero1[i][j]=='d'||tablero1[i][j]=='f'){
+        if(j1_Flota[i][j]=='a'||j1_Flota[i][j]=='d'||j1_Flota[i][j]=='f'){
                     ci=i;
                     cj=j;
                     for(n=0;n<=100;n++){
-                    while(ci<=i-1|ci==i|ci>=i+1){     \\selecciona una posicion aleatoria de un area de la matriz donde ha ocurrido un impacto
+                    while(ci<=i-1||ci==i||ci>=i+1){     \\ selecciona una posicion aleatoria de un area de la matriz donde ha ocurrido un impacto
                         i=rand()%11;
                         }
-                        while(cj<=j-1|cj==j|cj>=j+1){
+                        while(cj<=j-1||cj==j||cj>=j+1){
                         j=rand()%11;
                         }
-
-                if(tablero1[i][j]=='a'||tablero1[i][j]=='d'||tablero1[i][j]=='f'||tablero1[i][j]=!'*'){
-                   if(tablero1[i][j]=='f'||tablero1[i][j]=!'*'){
+                        if(jugador1.disparo='A'){
+                        *disparosJ1 =  *disparosJ1+1;
+                            }else{
+                        *disparosJ2 =  *disparosJ2+1;
+                            }
+                if(j1_Flota[i][j]=='a'||j1_Flota[i][j]=='d'||j1_Flota[i][j]=='f'||j1_Flota[i][j]=!'*'){
+                   if(j1_Flota[i][j]=='f'||j1_Flota[i][j]=!'*'){
                     printf("tocado");
-                    tablero1[i][j]='T';
-                    printf("%d",tablero1[i][j]);
-                    chequeoH(tablero1[i][j],barcosJ1,nbJ1);
-                    printf("%d",tablero1[i][j]);
+                    j1_Flota[i][j]='T';
+                    j1_Oponente[i][j]='T';
+                    printf("%d",j1_Oponente[i][j]);
+                    chequeoH(j1_Flota[i][j],j1_Oponente[i][j],barcosJ1,nbJ1);
+                    printf("%d",j1_Oponente[i][j]);
                    }
-                   if(tablero1[i][j]=='d'||tablero1[i][j]=!'*'){
+                   if(j1_Flota[i][j]=='d'||j1_Flota[i][j]=!'*'){
                     printf("tocado");
-                    tablero1[i][j]='T';
-                    printf("%d",tablero1[i][j]);
-                    chequeoH(tablero1[i][j],barcosJ1,nbJ1);
-                    printf("%d",tablero1[i][j]);
+                    j1_Flota[i][j]='T';
+                    j1_Oponente[i][j]='T';
+                    printf("%d",j1_Oponente[i][j]);
+                    chequeoH(j1_Flota[i][j],j1_Oponente[i][j],barcosJ1,nbJ1);
+                    printf("%d",j1_Oponente[i][j]);
                    }
 
-                    if(tablero1[i][j]=='a'||tablero1[i][j]='*'){
+                    if(j1_Flota[i][j]=='a'||j1_Flota[i][j]=!'*'){
                     printf("tocado");
-                    tablero1[i][j]='T';
-                    printf("%d",tablero1[i][j]);
-                    chequeoH(tablero1[i][j],barcosJ1,nbJ1);
-                    printf("%d",tablero1[i][j]);
+                    j1_Flota[i][j]='T';
+                    j1_Oponente[i][j]='T';
+                    printf("%d",j1_Oponente[i][j]);
+                    chequeoH(j1_Flota[i][j],j1_Oponente[i][j],barcosJ1,nbJ1);
+                    printf("%d",j1_Oponente[i][j]);
                     }
-                if(tablero1[i][j]=='s'||tablero1[i][j]=!'*'){
+                if(j1_Flota[i][j]=='s'||j1_Flota[i][j]=!'*'){
                     printf("hundido");
                     BarcosJ1.submarino = 0;
                     nbJ1=nbJ1-1;
-                    tablero1[i][j]='H';
-                    printf("%d",tablero1[i][j]);
+                    j1_Flota[i][j]='H';
+                    j1_Oponente[i][j]='H';
+                    printf("%d",j1_Oponente[i][j]);
                 }else{
                     printf("fallo");
-                    tablero1[i][j]='*';
-                    printf("%d",tablero1[i][j]);
+                    j1_Flota[i][j]='*';
+                    j1_Oponente[i][j]='*';
+                    printf("%d",j1_Oponente[i][j]);
                 }
+                
                 }
-            }while(tablero1[i][j]=='a'||tablero1[i][j]=='d'||tablero1[i][j]=='f'||tablero1[i][j]=!'*')
+            }while(j1_Flota[i][j]=='a'||j1_Flota[i][j]=='d'||j1_Flota[i][j]=='f'||j1_Flota[i][j]=!'*')
 
             }
         }
@@ -179,44 +302,47 @@ while(j==0||j>=10){
         fin = 0;
     }
 }
-void chequeoH(char **tablero[i][j],int nBar,Barcos){
+void chequeoH(int i, int j, char **j_Flota, char **j_Oponente, Barcos *barcos, int *nBar){
     int h,l,cont;
     cont=0;
         for(h=i-1,h<=i+1,h++){
             for(l=j-1,l<=j+1,l++){
-                if(tablero[h][l]='f'||tablero[h][l]!=tablero[i][j]{
-                    tablero[i][j]='H';
-                    tablero[h][l]='H';
-                    Barcos.fragatas=Barcos.fragatas-1;
-                    nBar=nbar-1;
+                if(j1_Flota[h][l]=='f'||j1_Flota[h][l]!=j1_Flota[i][j]{
+                    j1_Flota[i][j]='H';
+                    j1_Flota[h][l]='H';
+                    j1_Oponente[i][j]='H';
+                    j1_Oponente[h][l]='H';
+                     (*nBar)--;
                 }
-                if(tablero[h][l]='d'||tablero[h][l]!=tablero[i][j]){
-                    tablero[h][l]='T';
+                if(j1_Flota[h][l]=='d'||j1_Flota[h][l]!=j1_Flota[i][j]){
+                    j1_Flota[h][l]='T';
                     cont=cont+1;
                         if(cont=2){
                             for(h=i-1,h<=i+1,h++){
                                 for(l=j-1,l<=j+1,l++){
-                                    if(tablero[h][l]='T'||tablero[h][l]!=tablero[i][j]{
-                                        tablero[i][j]='H';
-                                        tablero[h][l]='H';
-                                        Barcos.destructores=Barcos.destructores-1;
-                                        nBar=nbar-1;
+                                    if(j1_Flota[h][l]='T'||j1_Flota[h][l]!=j1_Flota[i][j]{
+                                        j1_Flota[i][j]='H';
+                                        j1_Flota[h][l]='H';
+                                        j1_Oponente[i][j]='H';
+                                        j1_Oponente[h][l]='H';
+                                         (*nBar)--;
                                     }
                                 }
                             }
                     }
                 }
-                 if(tablero[h][l]='a'||tablero[h][l]!=tablero[i][j]){
-                    tablero[h][l]='T';
+                 if(j1_Flota[h][l]=='a'||j1_Flota[h][l]!=j1_Flota[i][j]){
+                    j1_Flota[h][l]='T';
                     cont=cont+1;  
                     if(cont=3){
                         for(h=i-2,h<=i+2,h++){
                             for(l=j-2,l<=j+2,l++){
-                                if(tablero[h][l]='T'||tablero[h][l]!=tablero[i][j]){
-                                    tablero[i][j]='H';
-                                    tablero[h][l]='H';
-                                    Barcos.acorazado=Barcos.acorazado-1;
-                                    nBar=nbar-1;
+                                if(j1_Flota[h][l]='T'||j1_Flota[h][l]!=j1_Flota[i][j]){
+                                    j1_Flota[i][j]='H';
+                                    j1_Flota[h][l]='H';
+                                    j1_Oponente[i][j]='H';
+                                    j1_Oponente[h][l]='H';
+                                     (*nBar)--;    
                                 }
                                 }
                             }
