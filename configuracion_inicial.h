@@ -1,3 +1,4 @@
+
 // Archivo: configuracion_inicial.h
 // Definición de estructuras y prototipos de funciones para la configuración inicial
 
@@ -32,7 +33,7 @@ typedef struct {
 
 // Prototipos de funciones
 int configuracion_inicial(void);
-void configuracion(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
+void configurar(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
                   char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero);
 void salir(void);
 void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 

@@ -52,7 +52,7 @@ int configuracion_inicial() {
 
     switch (opcion) {
         case 1:
-            configuracion(&jugador1, &jugador2, &flota, &num_barcos, &flota_total, 
+            configurar(&jugador1, &jugador2, &flota, &num_barcos, &flota_total, 
                          &j1_Flota, &j1_Oponente, &j2_Flota, &j2_Oponente, &tamano_tablero);
             break;
         case 2:
@@ -103,7 +103,7 @@ int configuracion_inicial() {
 //cabecera: void configuracion(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero)
 //precondición: el usuario ha seleccionado 1
 //postcondición: se ha configurado el juego con los datos de los barcos, jugadores y tablero
-void configuracion(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
+void configurar(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
                   char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero) {
     int opcion_configuracion;
     do {
@@ -368,7 +368,7 @@ void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *
     }
 
     // Volver al menú de configuración
-    configuracion(jugador1, jugador2, flota, num_barcos, flota_total, 
+    configurar(jugador1, jugador2, flota, num_barcos, flota_total, 
                  j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero);
 }
 
