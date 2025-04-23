@@ -4,11 +4,11 @@
 #include "juego.h"
 #include "configuracion_inicial.h"
 
-void disparoJ1(int filas, int columnas, char **j2_Flota, char **j2_Oponente, int *turnos, Barco *barcosJ2, int *nbJ2, int *fin);
-void disparoJ2(int filas, int columnas, char **j1_Flota, char **j1_Oponente, int *turnos, Barco *barcosJ1, int *nbJ1, int *fin);
-void disparoIA(char **j_Flota, char **j_Oponente, int filas, int columnas, int *turnos, Barco *barcosJ, int *nbJ, int *fin);
+void disparoJ1(int filas, int columnas, char **tablero_jugador2, int *disparos_realizados_jugador1,int *nbJ2, int *partida_finalizada);
+void disparoJ2(int filas, int columnas, char **tablero_jugador1, int *disparos_realizados_jugador2,int *nbJ1, int *partida_finalizada);
+void disparoIA(int filas, int columnas, char **tablero_jugador, int *disparos_realizados_jugador,int *nbJ, int *partida_finalizada);
 void inicializador();
-void chequeoH(int i, int j, char **j_Flota, char **j_Oponente, Barco *barcos, int *nBar);
+void chequeoH(int i, int j, char **j_Flota, char **j_Oponente, int *nBar);
 
 #endif // Disparo_h_INCLUDED
 
