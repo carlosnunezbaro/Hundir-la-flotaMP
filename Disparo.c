@@ -27,7 +27,7 @@ void disparoJ1(int filas, int columnas, char **j2_Flota, char **j2_Oponente, int
         printf("fallo");
         j2_Flota[i][j]='*';
         j2_Oponente[i][j]='*';
-        *disparoJ1 = *disparoJ1+1;
+        *disparosJ1 = *disparosJ1+1;
         printf("%d",j2_Oponente[i][j]);   // imprime la matriz oponente con el efecto del disparo ya efectuado
     }else{
         do{
