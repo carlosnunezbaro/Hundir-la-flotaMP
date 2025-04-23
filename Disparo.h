@@ -1,5 +1,8 @@
 #ifndef Disparo_h_INCLUDED
 #define Disparo_h_INCLUDED
+#include "estado-barcos.h"
+#include "juego.h"
+#include "configuracion_inicial.h"
 
 void disparoJ1(int filas, int columnas, char **j2_Flota, char **j2_Oponente, int *turnos, Barco *barcosJ2, int *nbJ2, int *fin);
 void disparoJ2(int filas, int columnas, char **j1_Flota, char **j1_Oponente, int *turnos, Barco *barcosJ1, int *nbJ1, int *fin);
