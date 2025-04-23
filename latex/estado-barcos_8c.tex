@@ -1,0 +1,79 @@
+\doxysection{estado-\/barcos.c File Reference}
+\hypertarget{estado-barcos_8c}{}\label{estado-barcos_8c}\index{estado-\/barcos.c@{estado-\/barcos.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include "{}configuracion\+\_\+inicial.\+h"{}}\newline
+{\ttfamily \#include "{}estado-\/barcos.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_barco}{Barco}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{estado-barcos_8c_a75de06e2241f7d97373e508c459c0122}{Imprimir\+\_\+\+Tablero}} (int filas, int columnas, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}tablero)
+\item 
+int \mbox{\hyperlink{estado-barcos_8c_ab9d2dee8a83ee700e3b479fb1d4c7d66}{Intentar\+\_\+\+Colocar}} (int filas, int columnas, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}tablero, \mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}barco)
+\item 
+int \mbox{\hyperlink{estado-barcos_8c_a759e93cad1d91b265ae316ddebed49d1}{Colocar\+\_\+\+Barco}} (int filas, int columnas, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}tablero, \mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}barco)
+\item 
+int \mbox{\hyperlink{estado-barcos_8c_afec7075dc5e1836303bf0e43b05def8a}{Barcos\+\_\+\+Pegados}} (int filas, int columnas, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}tablero, \mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}barco)
+\item 
+int \mbox{\hyperlink{estado-barcos_8c_ae549affc9756d23a591e59791058d5af}{Colocar\+\_\+\+Barcos\+\_\+\+BOT}} (int filas, int columnas, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}tablero, int flota\+\_\+total, \mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}barcos)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{estado-barcos_8c_afec7075dc5e1836303bf0e43b05def8a}\index{estado-\/barcos.c@{estado-\/barcos.c}!Barcos\_Pegados@{Barcos\_Pegados}}
+\index{Barcos\_Pegados@{Barcos\_Pegados}!estado-\/barcos.c@{estado-\/barcos.c}}
+\doxysubsubsection{\texorpdfstring{Barcos\_Pegados()}{Barcos\_Pegados()}}
+{\footnotesize\ttfamily \label{estado-barcos_8c_afec7075dc5e1836303bf0e43b05def8a} 
+int Barcos\+\_\+\+Pegados (\begin{DoxyParamCaption}\item[{int}]{filas}{, }\item[{int}]{columnas}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{tablero}{, }\item[{\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}}]{barco}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{estado-barcos_8c_source_l00095}{95}} of file \mbox{\hyperlink{estado-barcos_8c_source}{estado-\/barcos.\+c}}.
+
+\Hypertarget{estado-barcos_8c_a759e93cad1d91b265ae316ddebed49d1}\index{estado-\/barcos.c@{estado-\/barcos.c}!Colocar\_Barco@{Colocar\_Barco}}
+\index{Colocar\_Barco@{Colocar\_Barco}!estado-\/barcos.c@{estado-\/barcos.c}}
+\doxysubsubsection{\texorpdfstring{Colocar\_Barco()}{Colocar\_Barco()}}
+{\footnotesize\ttfamily \label{estado-barcos_8c_a759e93cad1d91b265ae316ddebed49d1} 
+int Colocar\+\_\+\+Barco (\begin{DoxyParamCaption}\item[{int}]{filas}{, }\item[{int}]{columnas}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{tablero}{, }\item[{\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}}]{barco}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{estado-barcos_8c_source_l00077}{77}} of file \mbox{\hyperlink{estado-barcos_8c_source}{estado-\/barcos.\+c}}.
+
+\Hypertarget{estado-barcos_8c_ae549affc9756d23a591e59791058d5af}\index{estado-\/barcos.c@{estado-\/barcos.c}!Colocar\_Barcos\_BOT@{Colocar\_Barcos\_BOT}}
+\index{Colocar\_Barcos\_BOT@{Colocar\_Barcos\_BOT}!estado-\/barcos.c@{estado-\/barcos.c}}
+\doxysubsubsection{\texorpdfstring{Colocar\_Barcos\_BOT()}{Colocar\_Barcos\_BOT()}}
+{\footnotesize\ttfamily \label{estado-barcos_8c_ae549affc9756d23a591e59791058d5af} 
+int Colocar\+\_\+\+Barcos\+\_\+\+BOT (\begin{DoxyParamCaption}\item[{int}]{filas}{, }\item[{int}]{columnas}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{tablero}{, }\item[{int}]{flota\+\_\+total}{, }\item[{\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}}]{barcos}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{estado-barcos_8c_source_l00152}{152}} of file \mbox{\hyperlink{estado-barcos_8c_source}{estado-\/barcos.\+c}}.
+
+\Hypertarget{estado-barcos_8c_a75de06e2241f7d97373e508c459c0122}\index{estado-\/barcos.c@{estado-\/barcos.c}!Imprimir\_Tablero@{Imprimir\_Tablero}}
+\index{Imprimir\_Tablero@{Imprimir\_Tablero}!estado-\/barcos.c@{estado-\/barcos.c}}
+\doxysubsubsection{\texorpdfstring{Imprimir\_Tablero()}{Imprimir\_Tablero()}}
+{\footnotesize\ttfamily \label{estado-barcos_8c_a75de06e2241f7d97373e508c459c0122} 
+int Imprimir\+\_\+\+Tablero (\begin{DoxyParamCaption}\item[{int}]{filas}{, }\item[{int}]{columnas}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{tablero}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{estado-barcos_8c_source_l00022}{22}} of file \mbox{\hyperlink{estado-barcos_8c_source}{estado-\/barcos.\+c}}.
+
+\Hypertarget{estado-barcos_8c_ab9d2dee8a83ee700e3b479fb1d4c7d66}\index{estado-\/barcos.c@{estado-\/barcos.c}!Intentar\_Colocar@{Intentar\_Colocar}}
+\index{Intentar\_Colocar@{Intentar\_Colocar}!estado-\/barcos.c@{estado-\/barcos.c}}
+\doxysubsubsection{\texorpdfstring{Intentar\_Colocar()}{Intentar\_Colocar()}}
+{\footnotesize\ttfamily \label{estado-barcos_8c_ab9d2dee8a83ee700e3b479fb1d4c7d66} 
+int Intentar\+\_\+\+Colocar (\begin{DoxyParamCaption}\item[{int}]{filas}{, }\item[{int}]{columnas}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{tablero}{, }\item[{\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}}]{barco}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{estado-barcos_8c_source_l00032}{32}} of file \mbox{\hyperlink{estado-barcos_8c_source}{estado-\/barcos.\+c}}.
+

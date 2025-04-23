@@ -29,6 +29,7 @@ typedef struct {
     int y;
     char orientacion[3];
     int cantidad;   // v (vertical), h (horizontal), d (diagonal)
+    int longitud;
 } Barco;
 
 // Prototipos de funciones

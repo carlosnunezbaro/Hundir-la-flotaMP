@@ -3,15 +3,10 @@
 #include <string.h>
 #include <time.h>
 #include "configuracion_inicial.h"
-#include "estado-barcos.h"
+#include "estado_barcos.h"
 
-typedef struct {
-    int longitud;
-    char orientacion[3];
-    int x;
-    int y;
-    int impactos;
-} Barco;
+Barco barco;
+
 
 int Imprimir_Tablero(int filas, int columnas, char **tablero);
 int Intentar_Colocar(int filas, int columnas, char **tablero, Barco *barco);
@@ -30,7 +25,7 @@ int Imprimir_Tablero(int filas, int columnas, char **tablero) {
 }
 
 int Intentar_Colocar(int filas, int columnas, char **tablero, Barco *barco) {
-    if (strcmp(barco->orientacion, "H") == '-') {
+    if (strcmp(barco->orientacion, "H") == 0) {
         if (barco->y + barco->longitud > columnas) return 0;
         for (int i = 0; i < barco->longitud; i++) {
             if (tablero[barco->x][barco->y + i] != '-') return 0;

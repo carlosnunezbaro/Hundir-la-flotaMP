@@ -1,6 +1,6 @@
 #ifndef Disparo_h_INCLUDED
 #define Disparo_h_INCLUDED
-#include "estado-barcos.h"
+#include "estado_barcos.h"
 #include "juego.h"
 #include "configuracion_inicial.h"
 

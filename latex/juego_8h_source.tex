@@ -1,0 +1,54 @@
+\doxysection{juego.\+h}
+\hypertarget{juego_8h_source}{}\label{juego_8h_source}\mbox{\hyperlink{juego_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ JUEGO\_H}}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ JUEGO\_H}}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00004}\mbox{\hyperlink{struct_estado_juego}{00004}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00005}\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{00005}}\ \ \ \ \ \textcolor{keywordtype}{int}\ **\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00006}\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{00006}}\ \ \ \ \ \textcolor{keywordtype}{int}\ **\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00007}\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{00007}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00008}\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{00008}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00009}\mbox{\hyperlink{struct_estado_juego_affc1bd9974797498b1c586f85f855ec2}{00009}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_estado_juego_affc1bd9974797498b1c586f85f855ec2}{barcos\_hundidos\_jugador1}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00010}\mbox{\hyperlink{struct_estado_juego_aae8250c59d3a0362fe94ad1b30f182d4}{00010}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_estado_juego_aae8250c59d3a0362fe94ad1b30f182d4}{barcos\_hundidos\_jugador2}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00011}\mbox{\hyperlink{struct_estado_juego_a68bb9ef0bf493f2707698dd53076e3d9}{00011}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_estado_juego_a68bb9ef0bf493f2707698dd53076e3d9}{disparos\_realizados\_jugador1}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00012}\mbox{\hyperlink{struct_estado_juego_a8e0125a548964b812126ba2d0fb18a2f}{00012}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_estado_juego_a8e0125a548964b812126ba2d0fb18a2f}{disparos\_realizados\_jugador2}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00013}\mbox{\hyperlink{struct_estado_juego_a17d0d98bd3d40c767c8e52df7626760c}{00013}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_estado_juego_a17d0d98bd3d40c767c8e52df7626760c}{partida\_finalizada}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00014}\mbox{\hyperlink{struct_estado_juego_ab10d165404e3f8c2ed881956bcf6100c}{00014}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_estado_juego_ab10d165404e3f8c2ed881956bcf6100c}{contra\_ia}};\ \textcolor{comment}{//\ Nuevo\ campo:\ 1\ si\ se\ juega\ contra\ IA,\ 0\ si\ es\ contra\ otro\ jugador}}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00015}00015\ \}\ \mbox{\hyperlink{struct_estado_juego}{EstadoJuego}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00017}\mbox{\hyperlink{struct_configuracion_juego}{00017}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00018}\mbox{\hyperlink{struct_configuracion_juego_ab23813e6e073c7cf9f2346f86f1d5ea8}{00018}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_configuracion_juego_ab23813e6e073c7cf9f2346f86f1d5ea8}{nombre\_jugador1}}[20];}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00019}\mbox{\hyperlink{struct_configuracion_juego_afa451ae52eb7ff14bc6e2758e6be0131}{00019}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_configuracion_juego_afa451ae52eb7ff14bc6e2758e6be0131}{nombre\_jugador2}}[20];}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00020}\mbox{\hyperlink{struct_configuracion_juego_a26aa3f1add31fb99ca51293ad35b542b}{00020}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_configuracion_juego_a26aa3f1add31fb99ca51293ad35b542b}{disparo\_jugador1}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00021}\mbox{\hyperlink{struct_configuracion_juego_aba3a449fc963e5b09655d39e1e3da285}{00021}}\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_configuracion_juego_aba3a449fc963e5b09655d39e1e3da285}{disparo\_jugador2}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00022}\mbox{\hyperlink{struct_configuracion_juego_a5a8a368f98f85e6c60bdd50c04b3235c}{00022}}\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_configuracion_juego_a5a8a368f98f85e6c60bdd50c04b3235c}{tamano\_tablero}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00023}00023\ \}\ \mbox{\hyperlink{struct_configuracion_juego}{ConfiguracionJuego}};}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00025}00025\ \textcolor{comment}{//\ Inicializa\ el\ estado\ del\ juego\ con\ el\ número\ de\ filas\ y\ columnas\ especificado}}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00026}00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8h_aecec309d0033a0c3cca01fc832eb3dcb}{inicializar\_juego}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_configuracion_juego}{ConfiguracionJuego}}\ *\mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}});}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00028}00028\ \textcolor{comment}{//\ Reinicia\ el\ juego\ liberando\ la\ memoria\ del\ tablero\ actual\ y\ re-\/inicializando\ el\ tablero\ con\ las\ mismas\ dimensiones}}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00029}00029\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8h_a56e6dff79f85713795fd494a2e14d274}{reiniciar\_juego}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_configuracion_juego}{ConfiguracionJuego}}\ *\mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}});}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00031}00031\ \textcolor{comment}{//\ Guarda\ el\ estado\ actual\ del\ juego\ en\ un\ archivo\ con\ el\ nombre\ especificado,\ en\ formato\ CSV}}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00032}00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8h_a1e33e5b11044a5fbd1baf9c535101bb3}{guardar\_juego}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *nombre\_archivo);}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00034}00034\ \textcolor{comment}{//\ Carga\ el\ estado\ del\ juego\ desde\ un\ archivo\ con\ el\ nombre\ especificado,\ en\ formato\ CSV}}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00035}00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8h_a14452a23aa8ae8fa2d1a1e0289606486}{cargar\_juego}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *nombre\_archivo);}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00037}00037\ \textcolor{comment}{//\ Muestra\ un\ resumen\ del\ juego,\ incluyendo\ el\ número\ de\ barcos\ hundidos\ y\ disparos\ realizados}}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00038}00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8h_a655ff2f652a8408fc46c0015a29666c7}{mostrar\_resumen}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego);}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00040}00040\ \textcolor{comment}{//\ Ejecuta\ la\ lógica\ del\ juego,\ permitiendo\ al\ jugador\ realizar\ disparos\ y\ actualizando\ el\ estado\ del\ juego\ en\ consecuencia}}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00041}00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8h_aa12757caddb6543b48f97e99789b6ce6}{jugar}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego);}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00043}00043\ \textcolor{comment}{//\ Muestra\ el\ menú\ principal\ del\ juego,\ permitiendo\ al\ usuario\ seleccionar\ opciones\ como\ jugar,\ reiniciar,\ mostrar\ resumen,\ guardar\ y\ cargar\ el\ juego,\ o\ salir}}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00044}00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8h_a61b41d1cab2ab9ce1cbcb35dfcdc4c72}{mostrar\_menu}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego);}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00046}00046\ \textcolor{comment}{//\ Abre\ un\ menú\ durante\ la\ partida\ al\ pulsar\ la\ barra\ espaciadora,\ permitiendo\ guardar\ la\ partida,\ continuar\ jugando\ o\ salir\ al\ menú\ principal}}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00047}00047\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8h_a7b058bcb9a4c78a45e6eaa80372de8a7}{menu\_pausa}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego);}
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{juego_8h_source_l00049}00049\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ JUEGO\_H}}
+
+\end{DoxyCode}

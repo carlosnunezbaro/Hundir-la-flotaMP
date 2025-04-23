@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "Disparo.h"
-#include "estado-barcos.h"
+#include "estado_barcos.h"
 #include "juego.h"
 #include "configuracion_inicial.h"
 

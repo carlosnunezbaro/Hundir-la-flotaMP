@@ -1,0 +1,138 @@
+\doxysection{configuracion\+\_\+inicial.\+h File Reference}
+\hypertarget{configuracion__inicial_8h}{}\label{configuracion__inicial_8h}\index{configuracion\_inicial.h@{configuracion\_inicial.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_jugador}{Jugador}}
+\item 
+struct \mbox{\hyperlink{struct_barco}{Barco}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{configuracion__inicial_8h_a59935a8f6cdf159b9fd96e6a7d49f5ea}{configuracion\+\_\+inicial}} (void)
+\item 
+void \mbox{\hyperlink{configuracion__inicial_8h_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}} (\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}jugador1, \mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}jugador2, \mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}flota, int \texorpdfstring{$\ast$}{*}num\+\_\+barcos, int \texorpdfstring{$\ast$}{*}flota\+\_\+total, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Oponente, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Oponente, int \texorpdfstring{$\ast$}{*}tamano\+\_\+tablero)
+\item 
+void \mbox{\hyperlink{configuracion__inicial_8h_a139b6da4984d356c5f7249933922e905}{salir}} (void)
+\item 
+void \mbox{\hyperlink{configuracion__inicial_8h_a3b90842df486a6f921528d8677f1784f}{introducir\+\_\+datos}} (\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}jugador1, \mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}jugador2, \mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}flota, int \texorpdfstring{$\ast$}{*}num\+\_\+barcos, int \texorpdfstring{$\ast$}{*}flota\+\_\+total, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Oponente, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Oponente, int \texorpdfstring{$\ast$}{*}tamano\+\_\+tablero, \mbox{\hyperlink{struct_configuracion_juego}{Configuracion\+Juego}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}}, \mbox{\hyperlink{struct_estado_juego}{Estado\+Juego}} \texorpdfstring{$\ast$}{*}estado\+\_\+juego)
+\item 
+void \mbox{\hyperlink{configuracion__inicial_8h_aa9656f927a41d0e9c273c6e2387994a7}{mostrar}} (\mbox{\hyperlink{struct_jugador}{Jugador}} jugador1, \mbox{\hyperlink{struct_jugador}{Jugador}} jugador2, int tamano\+\_\+tablero)
+\item 
+void \mbox{\hyperlink{configuracion__inicial_8h_abdc8e01abbd5ab465c76cbc3443e951b}{borrar}} (char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Oponente, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Oponente, int tamano\+\_\+tablero, \mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}flota, int num\+\_\+barcos, \mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}jugador1, \mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}jugador2)
+\item 
+void \mbox{\hyperlink{configuracion__inicial_8h_af381d434bd440bfff24b917956b1892b}{guardar}} (\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}flota, int num\+\_\+barcos, int flota\+\_\+total, \mbox{\hyperlink{struct_jugador}{Jugador}} jugador1, \mbox{\hyperlink{struct_jugador}{Jugador}} jugador2, int tamano\+\_\+tablero, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Oponente, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Oponente)
+\item 
+void \mbox{\hyperlink{configuracion__inicial_8h_a4a7b314cc387eb404ea26c0203f7eac7}{cargar}} (\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}flota, int \texorpdfstring{$\ast$}{*}num\+\_\+barcos, int \texorpdfstring{$\ast$}{*}flota\+\_\+total, \mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}jugador1, \mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}jugador2, int \texorpdfstring{$\ast$}{*}tamano\+\_\+tablero, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Oponente, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Oponente)
+\item 
+void \mbox{\hyperlink{configuracion__inicial_8h_afed99d1c093b1cffca63d2774db682ea}{volver}} (\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}jugador1, \mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}jugador2, \mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}flota, int \texorpdfstring{$\ast$}{*}num\+\_\+barcos, int \texorpdfstring{$\ast$}{*}flota\+\_\+total, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Oponente, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Oponente, int \texorpdfstring{$\ast$}{*}tamano\+\_\+tablero)
+\item 
+void \mbox{\hyperlink{configuracion__inicial_8h_a833d20d5d69217bc0cde0b8833f90e79}{imprimir\+\_\+tablero}} (FILE \texorpdfstring{$\ast$}{*}f, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}tablero, int tam)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{configuracion__inicial_8h_abdc8e01abbd5ab465c76cbc3443e951b}\index{configuracion\_inicial.h@{configuracion\_inicial.h}!borrar@{borrar}}
+\index{borrar@{borrar}!configuracion\_inicial.h@{configuracion\_inicial.h}}
+\doxysubsubsection{\texorpdfstring{borrar()}{borrar()}}
+{\footnotesize\ttfamily \label{configuracion__inicial_8h_abdc8e01abbd5ab465c76cbc3443e951b} 
+void borrar (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Oponente}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Oponente}{, }\item[{int}]{tamano\+\_\+tablero}{, }\item[{\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}}]{flota}{, }\item[{int}]{num\+\_\+barcos}{, }\item[{\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}}]{jugador1}{, }\item[{\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}}]{jugador2}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{configuracion__inicial_8c_source_l00413}{413}} of file \mbox{\hyperlink{configuracion__inicial_8c_source}{configuracion\+\_\+inicial.\+c}}.
+
+\Hypertarget{configuracion__inicial_8h_a4a7b314cc387eb404ea26c0203f7eac7}\index{configuracion\_inicial.h@{configuracion\_inicial.h}!cargar@{cargar}}
+\index{cargar@{cargar}!configuracion\_inicial.h@{configuracion\_inicial.h}}
+\doxysubsubsection{\texorpdfstring{cargar()}{cargar()}}
+{\footnotesize\ttfamily \label{configuracion__inicial_8h_a4a7b314cc387eb404ea26c0203f7eac7} 
+void cargar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{flota}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+\_\+barcos}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{flota\+\_\+total}{, }\item[{\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}}]{jugador1}{, }\item[{\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}}]{jugador2}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{tamano\+\_\+tablero}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Oponente}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Oponente}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{configuracion__inicial_8c_source_l00498}{498}} of file \mbox{\hyperlink{configuracion__inicial_8c_source}{configuracion\+\_\+inicial.\+c}}.
+
+\Hypertarget{configuracion__inicial_8h_aa28e7ecbea14a99fdc22b4f5d15f0db5}\index{configuracion\_inicial.h@{configuracion\_inicial.h}!configuracion@{configuracion}}
+\index{configuracion@{configuracion}!configuracion\_inicial.h@{configuracion\_inicial.h}}
+\doxysubsubsection{\texorpdfstring{configuracion()}{configuracion()}}
+{\footnotesize\ttfamily \label{configuracion__inicial_8h_aa28e7ecbea14a99fdc22b4f5d15f0db5} 
+void configuracion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}}]{jugador1}{, }\item[{\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}}]{jugador2}{, }\item[{\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{flota}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+\_\+barcos}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{flota\+\_\+total}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Oponente}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Oponente}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{tamano\+\_\+tablero}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{configuracion__inicial_8c_source_l00106}{106}} of file \mbox{\hyperlink{configuracion__inicial_8c_source}{configuracion\+\_\+inicial.\+c}}.
+
+\Hypertarget{configuracion__inicial_8h_a59935a8f6cdf159b9fd96e6a7d49f5ea}\index{configuracion\_inicial.h@{configuracion\_inicial.h}!configuracion\_inicial@{configuracion\_inicial}}
+\index{configuracion\_inicial@{configuracion\_inicial}!configuracion\_inicial.h@{configuracion\_inicial.h}}
+\doxysubsubsection{\texorpdfstring{configuracion\_inicial()}{configuracion\_inicial()}}
+{\footnotesize\ttfamily \label{configuracion__inicial_8h_a59935a8f6cdf159b9fd96e6a7d49f5ea} 
+int configuracion\+\_\+inicial (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{configuracion__inicial_8c_source_l00011}{11}} of file \mbox{\hyperlink{configuracion__inicial_8c_source}{configuracion\+\_\+inicial.\+c}}.
+
+\Hypertarget{configuracion__inicial_8h_af381d434bd440bfff24b917956b1892b}\index{configuracion\_inicial.h@{configuracion\_inicial.h}!guardar@{guardar}}
+\index{guardar@{guardar}!configuracion\_inicial.h@{configuracion\_inicial.h}}
+\doxysubsubsection{\texorpdfstring{guardar()}{guardar()}}
+{\footnotesize\ttfamily \label{configuracion__inicial_8h_af381d434bd440bfff24b917956b1892b} 
+void guardar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}}]{flota}{, }\item[{int}]{num\+\_\+barcos}{, }\item[{int}]{flota\+\_\+total}{, }\item[{\mbox{\hyperlink{struct_jugador}{Jugador}}}]{jugador1}{, }\item[{\mbox{\hyperlink{struct_jugador}{Jugador}}}]{jugador2}{, }\item[{int}]{tamano\+\_\+tablero}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Oponente}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Oponente}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{configuracion__inicial_8c_source_l00459}{459}} of file \mbox{\hyperlink{configuracion__inicial_8c_source}{configuracion\+\_\+inicial.\+c}}.
+
+\Hypertarget{configuracion__inicial_8h_a833d20d5d69217bc0cde0b8833f90e79}\index{configuracion\_inicial.h@{configuracion\_inicial.h}!imprimir\_tablero@{imprimir\_tablero}}
+\index{imprimir\_tablero@{imprimir\_tablero}!configuracion\_inicial.h@{configuracion\_inicial.h}}
+\doxysubsubsection{\texorpdfstring{imprimir\_tablero()}{imprimir\_tablero()}}
+{\footnotesize\ttfamily \label{configuracion__inicial_8h_a833d20d5d69217bc0cde0b8833f90e79} 
+void imprimir\+\_\+tablero (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{f}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{tablero}{, }\item[{int}]{tam}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{configuracion__inicial_8c_source_l00625}{625}} of file \mbox{\hyperlink{configuracion__inicial_8c_source}{configuracion\+\_\+inicial.\+c}}.
+
+\Hypertarget{configuracion__inicial_8h_a3b90842df486a6f921528d8677f1784f}\index{configuracion\_inicial.h@{configuracion\_inicial.h}!introducir\_datos@{introducir\_datos}}
+\index{introducir\_datos@{introducir\_datos}!configuracion\_inicial.h@{configuracion\_inicial.h}}
+\doxysubsubsection{\texorpdfstring{introducir\_datos()}{introducir\_datos()}}
+{\footnotesize\ttfamily \label{configuracion__inicial_8h_a3b90842df486a6f921528d8677f1784f} 
+void introducir\+\_\+datos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}}]{jugador1}{, }\item[{\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}}]{jugador2}{, }\item[{\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{flota}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+\_\+barcos}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{flota\+\_\+total}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Oponente}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Oponente}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{tamano\+\_\+tablero}{, }\item[{\mbox{\hyperlink{struct_configuracion_juego}{Configuracion\+Juego}} \texorpdfstring{$\ast$}{*}}]{configuracion}{, }\item[{\mbox{\hyperlink{struct_estado_juego}{Estado\+Juego}} \texorpdfstring{$\ast$}{*}}]{estado\+\_\+juego}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{configuracion__inicial_8c_source_l00168}{168}} of file \mbox{\hyperlink{configuracion__inicial_8c_source}{configuracion\+\_\+inicial.\+c}}.
+
+\Hypertarget{configuracion__inicial_8h_aa9656f927a41d0e9c273c6e2387994a7}\index{configuracion\_inicial.h@{configuracion\_inicial.h}!mostrar@{mostrar}}
+\index{mostrar@{mostrar}!configuracion\_inicial.h@{configuracion\_inicial.h}}
+\doxysubsubsection{\texorpdfstring{mostrar()}{mostrar()}}
+{\footnotesize\ttfamily \label{configuracion__inicial_8h_aa9656f927a41d0e9c273c6e2387994a7} 
+void mostrar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_jugador}{Jugador}}}]{jugador1}{, }\item[{\mbox{\hyperlink{struct_jugador}{Jugador}}}]{jugador2}{, }\item[{int}]{tamano\+\_\+tablero}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{configuracion__inicial_8c_source_l00378}{378}} of file \mbox{\hyperlink{configuracion__inicial_8c_source}{configuracion\+\_\+inicial.\+c}}.
+
+\Hypertarget{configuracion__inicial_8h_a139b6da4984d356c5f7249933922e905}\index{configuracion\_inicial.h@{configuracion\_inicial.h}!salir@{salir}}
+\index{salir@{salir}!configuracion\_inicial.h@{configuracion\_inicial.h}}
+\doxysubsubsection{\texorpdfstring{salir()}{salir()}}
+{\footnotesize\ttfamily \label{configuracion__inicial_8h_a139b6da4984d356c5f7249933922e905} 
+void salir (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{configuracion__inicial_8c_source_l00160}{160}} of file \mbox{\hyperlink{configuracion__inicial_8c_source}{configuracion\+\_\+inicial.\+c}}.
+
+\Hypertarget{configuracion__inicial_8h_afed99d1c093b1cffca63d2774db682ea}\index{configuracion\_inicial.h@{configuracion\_inicial.h}!volver@{volver}}
+\index{volver@{volver}!configuracion\_inicial.h@{configuracion\_inicial.h}}
+\doxysubsubsection{\texorpdfstring{volver()}{volver()}}
+{\footnotesize\ttfamily \label{configuracion__inicial_8h_afed99d1c093b1cffca63d2774db682ea} 
+void volver (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}}]{jugador1}{, }\item[{\mbox{\hyperlink{struct_jugador}{Jugador}} \texorpdfstring{$\ast$}{*}}]{jugador2}{, }\item[{\mbox{\hyperlink{struct_barco}{Barco}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{flota}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{num\+\_\+barcos}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{flota\+\_\+total}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Oponente}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Oponente}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{tamano\+\_\+tablero}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{configuracion__inicial_8c_source_l00619}{619}} of file \mbox{\hyperlink{configuracion__inicial_8c_source}{configuracion\+\_\+inicial.\+c}}.
+

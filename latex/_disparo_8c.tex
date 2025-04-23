@@ -1,0 +1,104 @@
+\doxysection{Disparo.\+c File Reference}
+\hypertarget{_disparo_8c}{}\label{_disparo_8c}\index{Disparo.c@{Disparo.c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}Disparo.\+h"{}}\newline
+{\ttfamily \#include "{}estado-\/barcos.\+h"{}}\newline
+{\ttfamily \#include "{}barcos.\+h"{}}\newline
+{\ttfamily \#include "{}juego.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_disparo_8c_a8847e5ea51332506eefc34987da1a418}{inicializador}} ()
+\item 
+void \mbox{\hyperlink{_disparo_8c_aa8f2253e8a6b1bab6bce714b841827d9}{disparo\+J1}} (int filas, int columnas, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j2\+\_\+\+Oponente, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_disparo_8c_a03b9dc9e4b724c8ef1040a45b06e70f6}{turnos}}, Barcos \texorpdfstring{$\ast$}{*}barcos\+J2, int \texorpdfstring{$\ast$}{*}nb\+J2, int \texorpdfstring{$\ast$}{*}fin)
+\item 
+void \mbox{\hyperlink{_disparo_8c_a922307e751742ecfca82b6e30a107d98}{disparo\+J2}} (int filas, int columnas, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j1\+\_\+\+Oponente, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_disparo_8c_a03b9dc9e4b724c8ef1040a45b06e70f6}{turnos}}, Barcos \texorpdfstring{$\ast$}{*}barcos\+J1, int \texorpdfstring{$\ast$}{*}nb\+J1, int \texorpdfstring{$\ast$}{*}fin)
+\item 
+void \mbox{\hyperlink{_disparo_8c_acc8481069b4adf1c9d0df58ac550cc00}{disparo\+IA}} (char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j\+\_\+\+Oponente, int filas, int columnas, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{_disparo_8c_a03b9dc9e4b724c8ef1040a45b06e70f6}{turnos}}, Barcos \texorpdfstring{$\ast$}{*}barcosJ, int \texorpdfstring{$\ast$}{*}nbJ, int \texorpdfstring{$\ast$}{*}fin)
+\item 
+\mbox{\hyperlink{_disparo_8c_a7e58e350a015a7a6395c5e388664a700}{if}} (nbJ=0)
+\item 
+void \mbox{\hyperlink{_disparo_8c_a689d0158ff41b0ca6dacb18f17866ddb}{chequeoH}} (int i, int j, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j\+\_\+\+Flota, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}j\+\_\+\+Oponente, Barcos \texorpdfstring{$\ast$}{*}barcos, int \texorpdfstring{$\ast$}{*}n\+Bar)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_disparo_8c_a03b9dc9e4b724c8ef1040a45b06e70f6}{turnos}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_disparo_8c_a689d0158ff41b0ca6dacb18f17866ddb}\index{Disparo.c@{Disparo.c}!chequeoH@{chequeoH}}
+\index{chequeoH@{chequeoH}!Disparo.c@{Disparo.c}}
+\doxysubsubsection{\texorpdfstring{chequeoH()}{chequeoH()}}
+{\footnotesize\ttfamily \label{_disparo_8c_a689d0158ff41b0ca6dacb18f17866ddb} 
+void chequeoH (\begin{DoxyParamCaption}\item[{int}]{i}{, }\item[{int}]{j}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j\+\_\+\+Oponente}{, }\item[{Barcos \texorpdfstring{$\ast$}{*}}]{barcos}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{n\+Bar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_disparo_8c_source_l00185}{185}} of file \mbox{\hyperlink{_disparo_8c_source}{Disparo.\+c}}.
+
+\Hypertarget{_disparo_8c_acc8481069b4adf1c9d0df58ac550cc00}\index{Disparo.c@{Disparo.c}!disparoIA@{disparoIA}}
+\index{disparoIA@{disparoIA}!Disparo.c@{Disparo.c}}
+\doxysubsubsection{\texorpdfstring{disparoIA()}{disparoIA()}}
+{\footnotesize\ttfamily \label{_disparo_8c_acc8481069b4adf1c9d0df58ac550cc00} 
+void disparo\+IA (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j\+\_\+\+Oponente}{, }\item[{int}]{filas}{, }\item[{int}]{columnas}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{turnos}{, }\item[{Barcos \texorpdfstring{$\ast$}{*}}]{barcosJ}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{nbJ}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{fin}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_disparo_8c_source_l00110}{110}} of file \mbox{\hyperlink{_disparo_8c_source}{Disparo.\+c}}.
+
+\Hypertarget{_disparo_8c_aa8f2253e8a6b1bab6bce714b841827d9}\index{Disparo.c@{Disparo.c}!disparoJ1@{disparoJ1}}
+\index{disparoJ1@{disparoJ1}!Disparo.c@{Disparo.c}}
+\doxysubsubsection{\texorpdfstring{disparoJ1()}{disparoJ1()}}
+{\footnotesize\ttfamily \label{_disparo_8c_aa8f2253e8a6b1bab6bce714b841827d9} 
+void disparo\+J1 (\begin{DoxyParamCaption}\item[{int}]{filas}{, }\item[{int}]{columnas}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j2\+\_\+\+Oponente}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{turnos}{, }\item[{Barcos \texorpdfstring{$\ast$}{*}}]{barcos\+J2}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{nb\+J2}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{fin}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_disparo_8c_source_l00016}{16}} of file \mbox{\hyperlink{_disparo_8c_source}{Disparo.\+c}}.
+
+\Hypertarget{_disparo_8c_a922307e751742ecfca82b6e30a107d98}\index{Disparo.c@{Disparo.c}!disparoJ2@{disparoJ2}}
+\index{disparoJ2@{disparoJ2}!Disparo.c@{Disparo.c}}
+\doxysubsubsection{\texorpdfstring{disparoJ2()}{disparoJ2()}}
+{\footnotesize\ttfamily \label{_disparo_8c_a922307e751742ecfca82b6e30a107d98} 
+void disparo\+J2 (\begin{DoxyParamCaption}\item[{int}]{filas}{, }\item[{int}]{columnas}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Flota}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{j1\+\_\+\+Oponente}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{turnos}{, }\item[{Barcos \texorpdfstring{$\ast$}{*}}]{barcos\+J1}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{nb\+J1}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{fin}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_disparo_8c_source_l00062}{62}} of file \mbox{\hyperlink{_disparo_8c_source}{Disparo.\+c}}.
+
+\Hypertarget{_disparo_8c_a7e58e350a015a7a6395c5e388664a700}\index{Disparo.c@{Disparo.c}!if@{if}}
+\index{if@{if}!Disparo.c@{Disparo.c}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}}
+{\footnotesize\ttfamily \label{_disparo_8c_a7e58e350a015a7a6395c5e388664a700} 
+if (\begin{DoxyParamCaption}\item[{nbJ}]{}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_disparo_8c_source_l00181}{181}} of file \mbox{\hyperlink{_disparo_8c_source}{Disparo.\+c}}.
+
+\Hypertarget{_disparo_8c_a8847e5ea51332506eefc34987da1a418}\index{Disparo.c@{Disparo.c}!inicializador@{inicializador}}
+\index{inicializador@{inicializador}!Disparo.c@{Disparo.c}}
+\doxysubsubsection{\texorpdfstring{inicializador()}{inicializador()}}
+{\footnotesize\ttfamily \label{_disparo_8c_a8847e5ea51332506eefc34987da1a418} 
+void inicializador (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_disparo_8c_source_l00009}{9}} of file \mbox{\hyperlink{_disparo_8c_source}{Disparo.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_disparo_8c_a03b9dc9e4b724c8ef1040a45b06e70f6}\index{Disparo.c@{Disparo.c}!turnos@{turnos}}
+\index{turnos@{turnos}!Disparo.c@{Disparo.c}}
+\doxysubsubsection{\texorpdfstring{turnos}{turnos}}
+{\footnotesize\ttfamily \label{_disparo_8c_a03b9dc9e4b724c8ef1040a45b06e70f6} 
+turnos}
+
+
+
+Definition at line \mbox{\hyperlink{_disparo_8c_source_l00180}{180}} of file \mbox{\hyperlink{_disparo_8c_source}{Disparo.\+c}}.
+

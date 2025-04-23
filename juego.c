@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "juego.h"
-#include "estado-barcos.h"
-#include "disparo.h"
+#include "estado_barcos.h"
+#include "Disparo.h"
 
 // Inicializa el estado del juego con el número de filas y columnas especificado
 void inicializar_juego(EstadoJuego *estado_juego, const ConfiguracionJuego *configuracion) {

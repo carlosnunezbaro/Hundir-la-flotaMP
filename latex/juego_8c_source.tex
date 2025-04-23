@@ -1,0 +1,316 @@
+\doxysection{juego.\+c}
+\hypertarget{juego_8c_source}{}\label{juego_8c_source}\mbox{\hyperlink{juego_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{juego_8h}{juego.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{estado-barcos_8h}{estado-\/barcos.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_disparo_8h}{disparo.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00008}00008\ \textcolor{comment}{//\ Inicializa\ el\ estado\ del\ juego\ con\ el\ número\ de\ filas\ y\ columnas\ especificado}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00009}\mbox{\hyperlink{juego_8c_aecec309d0033a0c3cca01fc832eb3dcb}{00009}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8c_aecec309d0033a0c3cca01fc832eb3dcb}{inicializar\_juego}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_configuracion_juego}{ConfiguracionJuego}}\ *\mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}})\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00010}00010\ \ \ \ \ \textcolor{keywordtype}{int}\ filas\ =\ \mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}}-\/>tamano\_tablero;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00011}00011\ \ \ \ \ \textcolor{keywordtype}{int}\ columnas\ =\ \mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}}-\/>tamano\_tablero;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00012}00012\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00013}00013\ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}}\ =\ filas;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00014}00014\ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}}\ =\ columnas;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00016}00016\ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}}\ =\ (\textcolor{keywordtype}{int}\ **)malloc(filas\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}\ *));}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00017}00017\ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}}\ =\ (\textcolor{keywordtype}{int}\ **)malloc(filas\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}\ *));}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00018}00018\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ filas;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00019}00019\ \ \ \ \ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}}[i]\ =\ (\textcolor{keywordtype}{int}\ *)malloc(columnas\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00020}00020\ \ \ \ \ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}}[i]\ =\ (\textcolor{keywordtype}{int}\ *)malloc(columnas\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00021}00021\ \ \ \ \ \ \ \ \ memset(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}}[i],\ 0,\ columnas\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00022}00022\ \ \ \ \ \ \ \ \ memset(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}}[i],\ 0,\ columnas\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00025}00025\ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_affc1bd9974797498b1c586f85f855ec2}{barcos\_hundidos\_jugador1}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00026}00026\ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_aae8250c59d3a0362fe94ad1b30f182d4}{barcos\_hundidos\_jugador2}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00027}00027\ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a68bb9ef0bf493f2707698dd53076e3d9}{disparos\_realizados\_jugador1}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00028}00028\ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8e0125a548964b812126ba2d0fb18a2f}{disparos\_realizados\_jugador2}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00029}00029\ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a17d0d98bd3d40c767c8e52df7626760c}{partida\_finalizada}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Llamar\ a\ la\ función\ para\ colocar\ los\ barcos\ para\ ambos\ jugadores}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00032}00032\ \ \ \ \ Colocar\_Barcos(filas,\ columnas,\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00033}00033\ \ \ \ \ Colocar\_Barcos(filas,\ columnas,\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00036}00036\ \textcolor{comment}{//\ Reinicia\ el\ juego\ liberando\ la\ memoria\ del\ tablero\ actual\ y\ re-\/inicializando\ el\ tablero\ con\ las\ mismas\ dimensiones}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00037}\mbox{\hyperlink{juego_8c_a56e6dff79f85713795fd494a2e14d274}{00037}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8c_a56e6dff79f85713795fd494a2e14d274}{reiniciar\_juego}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_configuracion_juego}{ConfiguracionJuego}}\ *\mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}})\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00039}00039\ \ \ \ \ \ \ \ \ free(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}}[i]);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ free(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}}[i]);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00042}00042\ \ \ \ \ free(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00043}00043\ \ \ \ \ free(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00044}00044\ \ \ \ \ \mbox{\hyperlink{juego_8c_aecec309d0033a0c3cca01fc832eb3dcb}{inicializar\_juego}}(estado\_juego,\ \mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00047}00047\ \textcolor{comment}{//\ Guarda\ el\ estado\ actual\ del\ juego\ en\ un\ archivo\ con\ el\ nombre\ especificado,\ en\ formato\ CSV}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00048}\mbox{\hyperlink{juego_8c_a1e33e5b11044a5fbd1baf9c535101bb3}{00048}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8c_a1e33e5b11044a5fbd1baf9c535101bb3}{guardar\_juego}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *nombre\_archivo)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00049}00049\ \ \ \ \ FILE\ *archivo\ =\ fopen(nombre\_archivo,\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (archivo\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}Error\ al\ abrir\ el\ archivo\ para\ guardar"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Guardar\ las\ dimensiones\ del\ tablero}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00056}00056\ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\%d,\%d\(\backslash\)n"{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00057}00057\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Guardar\ el\ tablero\ del\ Jugador\ 1}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}};\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\%d"{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}}[i][j]);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ estado\_juego-\/>columnas\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{},"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ Guardar\ el\ tablero\ del\ Jugador\ 2}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}};\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\%d"{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}}[i][j]);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ estado\_juego-\/>columnas\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{},"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ Guardar\ el\ número\ de\ barcos\ hundidos\ y\ disparos\ realizados\ para\ ambos\ jugadores}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00081}00081\ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\%d,\%d\(\backslash\)n"{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_affc1bd9974797498b1c586f85f855ec2}{barcos\_hundidos\_jugador1}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a68bb9ef0bf493f2707698dd53076e3d9}{disparos\_realizados\_jugador1}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00082}00082\ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\%d,\%d\(\backslash\)n"{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_aae8250c59d3a0362fe94ad1b30f182d4}{barcos\_hundidos\_jugador2}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8e0125a548964b812126ba2d0fb18a2f}{disparos\_realizados\_jugador2}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ Guardar\ el\ estado\ de\ la\ partida}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00085}00085\ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\%d\(\backslash\)n"{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a17d0d98bd3d40c767c8e52df7626760c}{partida\_finalizada}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00086}00086\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00087}00087\ \ \ \ \ fclose(archivo);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00088}00088\ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00090}00090\ \textcolor{comment}{//\ Carga\ el\ estado\ del\ juego\ desde\ un\ archivo\ con\ el\ nombre\ especificado,\ en\ formato\ CSV}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00091}\mbox{\hyperlink{juego_8c_a14452a23aa8ae8fa2d1a1e0289606486}{00091}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8c_a14452a23aa8ae8fa2d1a1e0289606486}{cargar\_juego}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *nombre\_archivo)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00092}00092\ \ \ \ \ FILE\ *archivo\ =\ fopen(nombre\_archivo,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{if}\ (archivo\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}Error\ al\ abrir\ el\ archivo\ para\ cargar"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00098}00098\ \ \ \ \ \textcolor{comment}{//\ Leer\ las\ dimensiones\ del\ tablero}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00099}00099\ \ \ \ \ fscanf(archivo,\ \textcolor{stringliteral}{"{}\%d,\%d\(\backslash\)n"{}},\ \&estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}},\ \&estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ Reservar\ memoria\ para\ los\ tableros}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00102}00102\ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}}\ =\ (\textcolor{keywordtype}{int}\ **)malloc(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}}\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}\ *));}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00103}00103\ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}}\ =\ (\textcolor{keywordtype}{int}\ **)malloc(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}}\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}\ *));}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}}[i]\ =\ (\textcolor{keywordtype}{int}\ *)malloc(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}}\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}}[i]\ =\ (\textcolor{keywordtype}{int}\ *)malloc(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}}\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00107}00107\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ Leer\ el\ tablero\ del\ Jugador\ 1}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}};\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ fscanf(archivo,\ \textcolor{stringliteral}{"{}\%d"{}},\ \&estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}}[i][j]);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ estado\_juego-\/>columnas\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fgetc(archivo);\ \textcolor{comment}{//\ Leer\ la\ coma}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00117}00117\ \ \ \ \ \ \ \ \ fgetc(archivo);\ \textcolor{comment}{//\ Leer\ el\ salto\ de\ línea}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00118}00118\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//\ Leer\ el\ tablero\ del\ Jugador\ 2}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00121}00121\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}};\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ fscanf(archivo,\ \textcolor{stringliteral}{"{}\%d"{}},\ \&estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}}[i][j]);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (j\ <\ estado\_juego-\/>columnas\ -\/\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fgetc(archivo);\ \textcolor{comment}{//\ Leer\ la\ coma}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00127}00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00128}00128\ \ \ \ \ \ \ \ \ fgetc(archivo);\ \textcolor{comment}{//\ Leer\ el\ salto\ de\ línea}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00131}00131\ \ \ \ \ \textcolor{comment}{//\ Leer\ el\ número\ de\ barcos\ hundidos\ y\ disparos\ realizados\ para\ ambos\ jugadores}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00132}00132\ \ \ \ \ fscanf(archivo,\ \textcolor{stringliteral}{"{}\%d,\%d\(\backslash\)n"{}},\ \&estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_affc1bd9974797498b1c586f85f855ec2}{barcos\_hundidos\_jugador1}},\ \&estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a68bb9ef0bf493f2707698dd53076e3d9}{disparos\_realizados\_jugador1}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00133}00133\ \ \ \ \ fscanf(archivo,\ \textcolor{stringliteral}{"{}\%d,\%d\(\backslash\)n"{}},\ \&estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_aae8250c59d3a0362fe94ad1b30f182d4}{barcos\_hundidos\_jugador2}},\ \&estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8e0125a548964b812126ba2d0fb18a2f}{disparos\_realizados\_jugador2}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ Leer\ el\ estado\ de\ la\ partida}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00136}00136\ \ \ \ \ fscanf(archivo,\ \textcolor{stringliteral}{"{}\%d\(\backslash\)n"{}},\ \&estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a17d0d98bd3d40c767c8e52df7626760c}{partida\_finalizada}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00137}00137\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00138}00138\ \ \ \ \ fclose(archivo);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00139}00139\ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00141}00141\ \textcolor{comment}{//\ Muestra\ un\ resumen\ del\ juego,\ incluyendo\ el\ número\ de\ barcos\ hundidos\ y\ disparos\ realizados}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00142}\mbox{\hyperlink{juego_8c_a655ff2f652a8408fc46c0015a29666c7}{00142}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8c_a655ff2f652a8408fc46c0015a29666c7}{mostrar\_resumen}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00143}00143\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Resumen\ de\ la\ partida:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00145}00145\ \ \ \ \ \textcolor{keywordflow}{if}\ (!estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a17d0d98bd3d40c767c8e52df7626760c}{partida\_finalizada}})\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00146}00146\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Sin\ datos\ definitivos,\ por\ favor\ acaba\ con\ la\ flota\ enemiga.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00148}00148\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00150}00150\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Barcos\ hundidos\ Jugador\ 1:\ \%d\(\backslash\)n"{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_affc1bd9974797498b1c586f85f855ec2}{barcos\_hundidos\_jugador1}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00151}00151\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Disparos\ realizados\ Jugador\ 1:\ \%d\(\backslash\)n"{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a68bb9ef0bf493f2707698dd53076e3d9}{disparos\_realizados\_jugador1}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00153}00153\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Barcos\ hundidos\ Jugador\ 2:\ \%d\(\backslash\)n"{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_aae8250c59d3a0362fe94ad1b30f182d4}{barcos\_hundidos\_jugador2}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00154}00154\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Disparos\ realizados\ Jugador\ 2:\ \%d\(\backslash\)n"{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8e0125a548964b812126ba2d0fb18a2f}{disparos\_realizados\_jugador2}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00156}00156\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nTablero\ Jugador\ 1:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00157}00157\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d\ "{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}}[i][j]);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00160}00160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00161}00161\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00164}00164\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nTablero\ Jugador\ 2:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00165}00165\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ i\ <\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}};\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%d\ "{}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}}[i][j]);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00168}00168\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00169}00169\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00170}00170\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00171}00171\ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00173}00173\ \textcolor{comment}{//\ Ejecuta\ la\ lógica\ del\ juego,\ permitiendo\ al\ jugador\ realizar\ disparos\ y\ actualizando\ el\ estado\ del\ juego\ en\ consecuencia}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00174}\mbox{\hyperlink{juego_8c_aa12757caddb6543b48f97e99789b6ce6}{00174}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8c_aa12757caddb6543b48f97e99789b6ce6}{jugar}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00175}00175\ \ \ \ \ \textcolor{keywordtype}{int}\ x,\ y;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00176}00176\ \ \ \ \ \textcolor{keywordtype}{char}\ continuar\ =\ \textcolor{charliteral}{'s'};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00178}00178\ \ \ \ \ printf(\textcolor{stringliteral}{"{}La\ partida\ ha\ comenzado.\ Pulsa\ la\ barra\ espaciadora\ para\ abrir\ el\ menú\ de\ pausa.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00180}00180\ \ \ \ \ \textcolor{keywordflow}{while}\ (continuar\ ==\ \textcolor{charliteral}{'s'}\ ||\ continuar\ ==\ \textcolor{charliteral}{'S'})\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Verificar\ si\ hay\ una\ tecla\ pulsada}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (kbhit())\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ tecla\ =\ getch();\ \textcolor{comment}{//\ Capturar\ la\ tecla\ pulsada}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ la\ tecla\ es\ la\ barra\ espaciadora}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tecla\ ==\ \textcolor{charliteral}{'\ '})\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{juego_8c_a7b058bcb9a4c78a45e6eaa80372de8a7}{menu\_pausa}}(estado\_juego);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00189}00189\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Turno\ del\ jugador\ 1}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00192}00192\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Turno\ del\ jugador\ 1.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00193}00193\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Introduce\ las\ coordenadas\ para\ disparar\ (fila\ columna):\ "{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00194}00194\ \ \ \ \ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\%d\ \%d"{}},\ \&x,\ \&y);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Llama\ a\ la\ lógica\ de\ disparo\ del\ jugador\ 1}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00197}00197\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_disparo_8c_aa8f2253e8a6b1bab6bce714b841827d9}{disparoJ1}}(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a64353cf5febbb9d6fa8ecf917f083b59}{tablero\_jugador2}},}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a68bb9ef0bf493f2707698dd53076e3d9}{disparos\_realizados\_jugador1}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_aae8250c59d3a0362fe94ad1b30f182d4}{barcos\_hundidos\_jugador2}},}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a17d0d98bd3d40c767c8e52df7626760c}{partida\_finalizada}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Verificar\ si\ el\ jugador\ 1\ ha\ ganado}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00202}00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_aae8250c59d3a0362fe94ad1b30f182d4}{barcos\_hundidos\_jugador2}}\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}¡El\ jugador\ 1\ ha\ ganado\ la\ partida!\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00205}00205\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Turno\ del\ jugador\ 2\ o\ IA}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00208}00208\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Turno\ del\ jugador\ 2.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00210}00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_ab10d165404e3f8c2ed881956bcf6100c}{contra\_ia}})\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ es\ contra\ IA,\ llama\ a\ disparoIA}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_disparo_8c_acc8481069b4adf1c9d0df58ac550cc00}{disparoIA}}(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8e0125a548964b812126ba2d0fb18a2f}{disparos\_realizados\_jugador2}},}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_affc1bd9974797498b1c586f85f855ec2}{barcos\_hundidos\_jugador1}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a17d0d98bd3d40c767c8e52df7626760c}{partida\_finalizada}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00214}00214\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ es\ contra\ otro\ jugador,\ captura\ las\ coordenadas}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Introduce\ las\ coordenadas\ para\ disparar\ (fila\ columna):\ "{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\%d\ \%d"{}},\ \&x,\ \&y);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Llama\ a\ la\ lógica\ de\ disparo\ del\ jugador\ 2}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_disparo_8c_a922307e751742ecfca82b6e30a107d98}{disparoJ2}}(estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a71a52ec7895d411e221ac20f735edf83}{filas}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8b9033cbcf974fdad8e83b8ff83cbe1e}{columnas}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a6801754746f11063ba6a2d1575f65c56}{tablero\_jugador1}},}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a8e0125a548964b812126ba2d0fb18a2f}{disparos\_realizados\_jugador2}},\ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_affc1bd9974797498b1c586f85f855ec2}{barcos\_hundidos\_jugador1}},}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_a17d0d98bd3d40c767c8e52df7626760c}{partida\_finalizada}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00223}00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Verificar\ si\ el\ jugador\ 2\ (o\ IA)\ ha\ ganado}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (estado\_juego-\/>\mbox{\hyperlink{struct_estado_juego_affc1bd9974797498b1c586f85f855ec2}{barcos\_hundidos\_jugador1}}\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}¡El\ jugador\ 2\ ha\ ganado\ la\ partida!\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00229}00229\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00231}00231\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Preguntar\ si\ se\ quiere\ continuar\ jugando}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00232}00232\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}¿Quieres\ seguir\ jugando?\ (s/n):\ "{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00233}00233\ \ \ \ \ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\ \%c"{}},\ \&continuar);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00234}00234\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00235}00235\ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00236}00236\ \textcolor{comment}{//\ Muestra\ el\ menú\ principal\ del\ juego,\ permitiendo\ al\ usuario\ seleccionar\ opciones\ como\ jugar,\ reiniciar,\ mostrar\ resumen,\ cargar\ el\ juego\ o\ salir}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00237}\mbox{\hyperlink{juego_8c_a61b41d1cab2ab9ce1cbcb35dfcdc4c72}{00237}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8c_a61b41d1cab2ab9ce1cbcb35dfcdc4c72}{mostrar\_menu}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00238}00238\ \ \ \ \ \textcolor{keywordtype}{int}\ opcion;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00239}00239\ \ \ \ \ \mbox{\hyperlink{struct_configuracion_juego}{ConfiguracionJuego}}\ \mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00240}00240\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00241}00241\ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00242}00242\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Menu:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00243}00243\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}1.\ Jugar\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00244}00244\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}2.\ Cargar\ partida\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00245}00245\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}3.\ Resumen\ de\ la\ partida\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00246}00246\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}4.\ Reiniciar\ partida\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00247}00247\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}5.\ Salir\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00248}00248\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Elige\ una\ opción:\ "{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00249}00249\ \ \ \ \ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\%d"{}},\ \&opcion);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00250}00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (opcion)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Permite\ cambiar\ la\ configuración\ y\ reiniciar\ la\ partida\ desde\ cero}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{configuracion__inicial_8c_a3b90842df486a6f921528d8677f1784f}{introducir\_datos}}(\&\mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{juego_8c_aecec309d0033a0c3cca01fc832eb3dcb}{inicializar\_juego}}(estado\_juego,\ \&\mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{juego_8c_aa12757caddb6543b48f97e99789b6ce6}{jugar}}(estado\_juego);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{juego_8c_a14452a23aa8ae8fa2d1a1e0289606486}{cargar\_juego}}(estado\_juego,\ \textcolor{stringliteral}{"{}partida\_guardada.csv"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{juego_8c_a655ff2f652a8408fc46c0015a29666c7}{mostrar\_resumen}}(estado\_juego);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 4:}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Inicia\ una\ nueva\ partida\ con\ la\ configuración\ existente,\ permitiendo\ nueva\ colocación\ de\ barcos}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{juego_8c_a56e6dff79f85713795fd494a2e14d274}{reiniciar\_juego}}(estado\_juego,\ \&\mbox{\hyperlink{configuracion__inicial_8c_aa28e7ecbea14a99fdc22b4f5d15f0db5}{configuracion}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{juego_8c_aa12757caddb6543b48f97e99789b6ce6}{jugar}}(estado\_juego);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 5:}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Saliendo\ del\ juego...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Opción\ no\ válida.\ Inténtalo\ de\ nuevo.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00273}00273\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00274}00274\ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (opcion\ !=\ 5);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00275}00275\ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00277}00277\ \textcolor{comment}{//\ Abre\ un\ menú\ durante\ la\ partida\ al\ pulsar\ la\ barra\ espaciadora,\ permitiendo\ guardar\ la\ partida,\ continuar\ jugando\ o\ salir\ al\ menú\ principal}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00278}\mbox{\hyperlink{juego_8c_a7b058bcb9a4c78a45e6eaa80372de8a7}{00278}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{juego_8c_a7b058bcb9a4c78a45e6eaa80372de8a7}{menu\_pausa}}(\mbox{\hyperlink{struct_estado_juego}{EstadoJuego}}\ *estado\_juego)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00279}00279\ \ \ \ \ \textcolor{keywordtype}{int}\ opcion;}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00280}00280\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{configuracion__inicial_8c_af381d434bd440bfff24b917956b1892b}{guardar}};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00281}00281\ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00282}00282\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Menu\ de\ Pausa:\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00283}00283\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}1.\ Volver\ a\ la\ partida\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00284}00284\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}2.\ Guardar\ partida\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00285}00285\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}3.\ Salir\ al\ menu\ principal\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00286}00286\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Elige\ una\ opción:\ "{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00287}00287\ \ \ \ \ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\%d"{}},\ \&opcion);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00288}00288\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (opcion)\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Introduce\ el\ nombre\ del\ archivo\ para\ guardar\ la\ partida:\ "{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ nombre\_archivo[100];}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\%s"{}},\ nombre\_archivo);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{juego_8c_a1e33e5b11044a5fbd1baf9c535101bb3}{guardar\_juego}}(estado\_juego,\ nombre\_archivo);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}¿Quieres\ guardar\ la\ partida\ antes\ de\ salir\ al\ menú\ principal?\ (s/n):\ "{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\ \%c"{}},\ \&\mbox{\hyperlink{configuracion__inicial_8c_af381d434bd440bfff24b917956b1892b}{guardar}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{configuracion__inicial_8c_af381d434bd440bfff24b917956b1892b}{guardar}}\ ==\ \textcolor{charliteral}{'s'}\ ||\ \mbox{\hyperlink{configuracion__inicial_8c_af381d434bd440bfff24b917956b1892b}{guardar}}\ ==\ \textcolor{charliteral}{'S'})\ \{}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Introduce\ el\ nombre\ del\ archivo\ para\ guardar\ la\ partida:\ "{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\%s"{}},\ nombre\_archivo);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{juego_8c_a1e33e5b11044a5fbd1baf9c535101bb3}{guardar\_juego}}(estado\_juego,\ nombre\_archivo);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Saliendo\ al\ menú\ principal...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Opción\ no\ válida.\ Inténtalo\ de\ nuevo.\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00309}00309\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00310}00310\ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (1);}
+\DoxyCodeLine{\Hypertarget{juego_8c_source_l00311}00311\ \}}
+
+\end{DoxyCode}
