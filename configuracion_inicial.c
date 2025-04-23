@@ -53,7 +53,8 @@ int configuracion_inicial() {
     switch (opcion) {
         case 1:
             configurar(&jugador1, &jugador2, &flota, &num_barcos, &flota_total, 
-                         &j1_Flota, &j1_Oponente, &j2_Flota, &j2_Oponente, &tamano_tablero);
+                         &j1_Flota, &j1_Oponente, &j2_Flota, &j2_Oponente, &tamano_tablero,
+                         &configuracion, &estado_juego);
             break;
         case 2:
             inicializar_juego(&estado_juego, &configuracion);
@@ -104,7 +105,8 @@ int configuracion_inicial() {
 //precondición: el usuario ha seleccionado 1
 //postcondición: se ha configurado el juego con los datos de los barcos, jugadores y tablero
 void configurar(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
-                  char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero) {
+                  char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero,
+                  ConfiguracionJuego *configuracion, EstadoJuego *estado_juego) {
     int opcion_configuracion;
     do {
         printf("Menú\n");
@@ -122,7 +124,7 @@ void configurar(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_ba
         switch (opcion_configuracion) {
             case 1:
                 introducir_datos(jugador1, jugador2, flota, num_barcos, flota_total, 
-                                j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero, &configuracion, &estado_juego);
+                                j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero, configuracion, estado_juego);
                 break;
             case 2:
                 mostrar(*jugador1, *jugador2, *tamano_tablero);
@@ -169,9 +171,6 @@ void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *
                      char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero,
                      ConfiguracionJuego *configuracion,EstadoJuego *estado_juego) {
     
-    //Estructuras para el módulo "juego"
-    EstadoJuego estado_juego;
-    ConfiguracionJuego configuracion;
 
     //Recoger datos
     printf("Introduce el nombre del jugador 1: ");
@@ -196,7 +195,6 @@ void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *
     configuracion->tamano_tablero = *tamano_tablero;
 
     //Barcos
-    int seguir = 1;
     int capacidad = 2; //capacidad inicial del vector
     *flota = (Barco *)malloc(capacidad * sizeof(Barco));
     if (*flota == NULL) {
@@ -369,7 +367,7 @@ void introducir_datos(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *
 
     // Volver al menú de configuración
     configurar(jugador1, jugador2, flota, num_barcos, flota_total, 
-                 j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero);
+                 j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero, configuracion, estado_juego);
 }
 
 //cabecera: mostrar(Jugador jugador1, Jugador jugador2, int tamano_tablero)
@@ -412,7 +410,9 @@ void mostrar(Jugador jugador1, Jugador jugador2, int tamano_tablero) {
 //postcondición: se han borrado los datos de los barcos, jugadores y tablero
 void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Oponente, 
            int tamano_tablero, Barco *flota, int num_barcos, Jugador *jugador1, Jugador *jugador2) {
-    // Liberar matrices dinámicas de jugador 1
+    
+     num_barcos = 0;
+            // Liberar matrices dinámicas de jugador 1
     for (int i = 0; i < tamano_tablero; i++) {
         free(j1_Flota[i]);
         free(j1_Oponente[i]);
