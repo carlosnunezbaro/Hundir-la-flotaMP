@@ -152,8 +152,7 @@ void configurar(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_ba
                      j2_Flota, j2_Oponente);
                 break;
             case 6:
-                volver(jugador1, jugador2, flota, num_barcos, flota_total, 
-                      j1_Flota, j1_Oponente, j2_Flota, j2_Oponente, tamano_tablero);
+                volver();
                 break;
         }
     } while (opcion_configuracion < 1 || opcion_configuracion > 6);
@@ -411,7 +410,7 @@ void mostrar(Jugador jugador1, Jugador jugador2, int tamano_tablero) {
 void borrar(char **j1_Flota, char **j1_Oponente, char **j2_Flota, char **j2_Oponente, 
            int tamano_tablero, Barco *flota, int num_barcos, Jugador *jugador1, Jugador *jugador2) {
     
-     num_barcos = 0;
+    num_barcos = 0;
             // Liberar matrices dinámicas de jugador 1
     for (int i = 0; i < tamano_tablero; i++) {
         free(j1_Flota[i]);
@@ -616,8 +615,7 @@ void cargar(Barco **flota, int *num_barcos, int *flota_total,
 //cabecera: void volver()
 //precondición: el usuario ha seleccionado 6 en configuración
 //postcondición: se ha vuelto al menú principal
-void volver(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
-    char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero) {
+void volver() {
     configuracion_inicial();
 }
 

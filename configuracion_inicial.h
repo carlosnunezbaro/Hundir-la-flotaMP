@@ -53,8 +53,7 @@ void cargar(Barco **flota, int *num_barcos, int *flota_total,
           int *tamano_tablero,
           char ***j1_Flota, char ***j1_Oponente,
           char ***j2_Flota, char ***j2_Oponente);
-void volver(Jugador *jugador1, Jugador *jugador2, Barco **flota, int *num_barcos, int *flota_total, 
-           char ***j1_Flota, char ***j1_Oponente, char ***j2_Flota, char ***j2_Oponente, int *tamano_tablero);
+void volver();
 void imprimir_tablero(FILE *f, char **tablero, int tam);
 
 #endif // CONFIGURACION_INICIAL_H
