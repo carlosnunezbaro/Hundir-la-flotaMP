@@ -1,21 +1,23 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "Disparo.h"
-#include "estado_barcos.h"
+#include "estado-barcos.h"
 #include "juego.h"
 #include "configuracion_inicial.h"
 
 
 void inicializador(){
     int *num_barcos;
-    int turnos = 1;
     int fin = 1;
     int *nbJ1 = *num_barcos;
     int *nbJ2 = *num_barcos;
 }
 
-void disparoJ1(int filas, int columnas, char **j2_Flota, char **j2_Oponente, int *turnos, Barco *barcosJ2, int *nbJ2, int *fin){
+void disparoJ1(int filas, int columnas, char **tablero_jugador2, int *disparos_realizados_jugador1,int *nbJ2, int *partida_finalizada){
     int i,j = 0;
+    // Declarar matrices locales j2_Flota y j2_Oponente basadas en tablero_jugador2 y disparos_realizados_jugador1
+    char **j2_Flota = tablero_jugador2;
+    char **j2_Oponente = tablero_jugador2;
     printf("introduce la posicion del disparo \n");
     do{
     printf("fila");
@@ -27,18 +29,20 @@ void disparoJ1(int filas, int columnas, char **j2_Flota, char **j2_Oponente, int
         printf("fallo");
         j2_Flota[i][j]='*';
         j2_Oponente[i][j]='*';
-        *disparosJ1 = *disparosJ1+1;
+        disparos_realizados_jugador1 = disparos_realizados_jugador1+1;
         printf("%d",j2_Oponente[i][j]);   // imprime la matriz oponente con el efecto del disparo ya efectuado
     }else{
         do{
-
             if(j2_Flota[i][j]=='B'||j2_Flota[i][j]!='*'){
                         printf("tocado");
                         j2_Flota[i][j]='T';
                         j2_Oponente[i][j]='T';
                         printf("%d",j2_Oponente[i][j]);
-                        chequeoH(j2_Flota[i][j],j2_Oponente[i][j],barcosJ2,nbJ2);
+                        chequeoH(i,j,j2_Flota[i][j],j2_Oponente[i][j],nbJ2);
                         printf("%d",j2_Oponente[i][j]);
+                        if(j2_Oponente == 'H'){
+                           nbJ2 =  nbJ2-1;
+                               }
                          do{
                             printf("fila");
                             scanf("%i \n",&i);
@@ -55,13 +59,16 @@ void disparoJ1(int filas, int columnas, char **j2_Flota, char **j2_Oponente, int
 
         }
 
-    turnos++;
     if(nbJ2=0){
-        fin = 0;
+        partida_finalizada = 0;
     }
 }
-void disparoJ2(int filas, int columnas, char **j1_Flota, char **j1_Oponente, int *turnos, Barco *barcosJ1, int *nbJ1, int *fin){
+void disparoJ2(int filas, int columnas, char **tablero_jugador1, int *disparos_realizados_jugador2,int *nbJ1, int *partida_finalizada) {
     int i,j = 0;
+    // Declarar matrices locales j2_Flota y j2_Oponente basadas en tablero_jugador2 y disparos_realizados_jugador1
+    char **j1_Flota = tablero_jugador1;
+    char **j1_Oponente = tablero_jugador1;
+
     printf("introduce la posicion del disparo \n");
     do{
     printf("fila");
@@ -73,7 +80,7 @@ void disparoJ2(int filas, int columnas, char **j1_Flota, char **j1_Oponente, int
         printf("fallo");
         j1_Flota[i][j]='*';
         j1_Oponente[i][j]='*';
-        *disparosJ2 = *disparosJ2+1;
+        *disparos_realizados_jugador2 = *disparos_realizados_jugador2+1;
         printf("%d",j1_Oponente[i][j]);   // imprime la matriz oponente con el efecto del disparo ya efectuado
     }else{
         do{
@@ -83,8 +90,11 @@ void disparoJ2(int filas, int columnas, char **j1_Flota, char **j1_Oponente, int
                         j1_Flota[i][j]='T';
                         j1_Oponente[i][j]='T';
                         printf("%d",j1_Oponente[i][j]);
-                        chequeoH(j1_Flota[i][j],j1_Oponente[i][j],barcosJ1,nbJ1);
+                        chequeoH(i,j,j1_Flota[i][j],j1_Oponente[i][j],nbJ1);
                         printf("%d",j1_Oponente[i][j]);
+                        if(j1_Oponente == 'H'){
+                           nbJ1 =  nbJ1-1;
+                               }
                          do{
                             printf("fila");
                             scanf("%i \n",&i);
@@ -101,14 +111,13 @@ void disparoJ2(int filas, int columnas, char **j1_Flota, char **j1_Oponente, int
 
         }
 
-    turnos++;
     if(nbJ1=0){
-        fin = 0;
+        partida_finalizada = 0;
     }
 }
 
 
-void disparoIA(char **j_Flota, char **j_Oponente, int filas, int columnas, int *turnos, Barco *barcosJ, int *nbJ, int *fin){
+void disparoIA(int filas, int columnas, char **tablero_jugador, int *disparos_realizados_jugador,int *nbJ, int *partida_finalizada) {
 int i,j,ci,cj,n;
 i=0;
 j=0;
@@ -119,14 +128,16 @@ while(j==0||j>=10){
     j=rand()%11;
 }
     if(jugador1.disparo='A'){
-        j_Flota[i][j] = j1_Flota[i][j];
-        j_Oponente[i][j] = j1_oponente[i][j];
-        *nbJ = *nbJ1;
-        *disparosJ1 =  *disparosJ1+1;
+        strcpy(tablero_jugador,tablero_jugador2);
+        char **j_Flota = tablero_jugador;
+        char **j_Oponente = tablero_jugador;
+        *nbJ = *nbJ2;
+        disparos_realizados_jugador=  disparos_realizados_jugador+1;
     }else{
-        j_Flota[i][j] = j2_Flota[i][j];
-        j_Oponente[i][j] = j2_oponente[i][j];
-        *nbj = *nbJ2;
+        strcpy(tablero_jugador,tablero_jugador1);
+        char **j_Flota = tablero_jugador;
+        char **j_Oponente = tablero_jugador;
+        *nbJ = *nbJ1;
         *disparosJ2 =  *disparosJ2+1;
     }
  if(j_Flota[i][j]=='-'){
@@ -140,8 +151,11 @@ while(j==0||j>=10){
                     j_Flota[i][j]='T';
                     j_Oponente[i][j]='T';
                     printf("%d",j_Oponente[i][j]);
-                    chequeoH(j_Flota[i][j],j_Oponente[i][j],barcosJ,nbJ);
+                    chequeoH(i,j,j_Flota[i][j],j_Oponente[i][j],nbJ);
                     printf("%d",j_Oponente[i][j]);
+                    if(j_Oponente == 'H'){
+                           nbJ =  nbJ-1;
+                               }
                     ci=i;
                     cj=j;
                     for(n=0;n<=100;n++){
@@ -151,9 +165,9 @@ while(j==0||j>=10){
                         while(cj<=j-1||cj==j||cj>=j+1){
                         j=rand()%11;
                         if(jugador1.disparo='A'){
-                        *disparosJ1 =  *disparosJ1+1;
+                        *disparos_realizados_jugador1 =  *disparos_realizados_jugador1+1;
                             }else{
-                        *disparosJ2 =  *disparosJ2+1;
+                        *disparos_realizados_jugador2 =  *disparos_realizados_jugador2+1;
                             }
                         }
                 if(j_Flota[i][j]=='B'){
@@ -162,8 +176,11 @@ while(j==0||j>=10){
                         j_Flota[i][j]='T';
                         j_Oponente[i][j]='T';
                         printf("%d",j_Oponente[i][j]);
-                        chequeoH(j_Flota[i][j],j_Oponente[i][j],barcosJ,nbJ);
+                        chequeoH(i,j,j_Flota[i][j],j_Oponente[i][j],nbJ);
                         printf("%d",j_Oponente[i][j]);
+                        if(j_Oponente == 'H'){
+                           nbJ =  nbJ-1;
+                               }
                     }else{
                         printf("fallo");
                         j_Flota[i][j]='*';
@@ -176,12 +193,11 @@ while(j==0||j>=10){
             }while(j_Flota[i][j]=='B'|| j_Flota[i][j]=!'*');
 
             }
-        turnos++;
     if(nbJ=0){
-        fin = 0;
+        partida_finalizada= 0;
     }
 
-void chequeoH(int i, int j, char **j_Flota, char **j_Oponente, Barco *barcos, int *nBar) {
+void chequeoH(int i, int j, char **j_Flota, char **j_Oponente, int *nBar){
     int h, l;
     int hay_B = 0;
 
