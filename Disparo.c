@@ -128,13 +128,13 @@ while(j==0||j>=10){
     j=rand()%11;
 }
     if(jugador1.disparo='A'){
-        strcpy(tablero_jugador,tablero_jugador2);
+        tablero_jugador = tablero_jugador2;
         char **j_Flota = tablero_jugador;
         char **j_Oponente = tablero_jugador;
         *nbJ = *nbJ2;
         disparos_realizados_jugador=  disparos_realizados_jugador+1;
     }else{
-        strcpy(tablero_jugador,tablero_jugador1);
+        tablero_jugador = tablero_jugador1;
         char **j_Flota = tablero_jugador;
         char **j_Oponente = tablero_jugador;
         *nbJ = *nbJ1;
