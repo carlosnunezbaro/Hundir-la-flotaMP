@@ -5,7 +5,7 @@
 #include "configuracion_inicial.h"
 #include "juego.h"
 #include "Disparo.h"
-#include "estado-barcos.h"
+#include "estado_barcos.h"
 
 
 
